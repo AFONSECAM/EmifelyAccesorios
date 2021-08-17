@@ -6,14 +6,15 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
+
 class CategoryController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:categories.create')->only(['create','store']);
+        $this->middleware('can:categories.create')->only(['create', 'store']);
         $this->middleware('can:categories.index')->only(['index']);
-        $this->middleware('can:categories.edit')->only(['edit','update']);
+        $this->middleware('can:categories.edit')->only(['edit', 'update']);
         $this->middleware('can:categories.show')->only(['show']);
         $this->middleware('can:categories.destroy')->only(['destroy']);
     }
@@ -26,9 +27,9 @@ class CategoryController extends Controller
     {
         return view('admin.category.create');
     }
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request, Category $category)
     {
-        Category::create($request->all());
+        $category->my_store($request);
         return redirect()->route('categories.index');
     }
     public function show(Category $category)
@@ -41,7 +42,7 @@ class CategoryController extends Controller
     }
     public function update(UpdateRequest $request, Category $category)
     {
-        $category->update($request->all());
+        $category->my_update($request);
         return redirect()->route('categories.index');
     }
     public function destroy(Category $category)

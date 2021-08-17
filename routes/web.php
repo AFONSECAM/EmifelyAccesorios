@@ -14,11 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/productos', function(){
+Route::get('/productos', function () {
     return view('web.show_grid');
 });
+Route::get('/detalles', function () {
+    return view('web.product_detail');
+});
+Route::get('/micuenta', function () {
+    return view('web.my_account');
+});
+Route::get('/login_register', function () {
+    return view('web.login_register');
+});
+Route::get('/contactenos', function () {
+    return view('web.contact_us');
+});
+Route::get('/cart', function () {
+    return view('web.cart');
+});
+Route::get('/checkout', function () {
+    return view('web.checkout');
+});
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('welcome');
     /* return redirect()->route('login'); */
 });

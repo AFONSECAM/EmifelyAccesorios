@@ -5,16 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class Tag extends Model
 {
     protected $fillable = [
-        'name', 'slug',
-        'icon', 'description',
+        'name', 'slug', 'description'
     ];
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 
     //Funcion para hacer el store del controlador
@@ -23,7 +22,6 @@ class Category extends Model
         self::create([
             'name' => $request->name,
             'slug'  => Str::slug($request->slug, '_'),
-            'icon'  => $request->icon,
             'description'  => $request->description
         ]);
     }
@@ -34,7 +32,6 @@ class Category extends Model
         $this->update([
             'name' => $request->name,
             'slug'  => Str::slug($request->slug, '_'),
-            'icon'  => $request->icon,
             'description'  => $request->description
         ]);
     }

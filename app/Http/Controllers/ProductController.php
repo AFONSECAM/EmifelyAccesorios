@@ -38,8 +38,7 @@ class ProductController extends Controller
         return view('admin.product.create', compact('categories', 'providers', 'tags'));
     }
     public function store(StoreRequest $request, Product $product)
-    {
-        /* dd($request->images); */
+    {        
         $product->my_store($request);
         return redirect()->route('products.index');
     }

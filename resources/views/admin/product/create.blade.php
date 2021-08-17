@@ -58,6 +58,14 @@
                         <textarea class="form-control" name="long_description" id="long_description"
                             rows="8"></textarea>
                     </div>
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title d-flex">Imagenes</h4>
+                                <input type="file" class="dropify" name="images[]" multiple>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,7 +106,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <input type="file" class="form-control" name="images[]">
                 </div>
             </div>
         </div>

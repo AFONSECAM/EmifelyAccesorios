@@ -98,20 +98,21 @@
                             @endforeach
                         </select>
                     </div>
+                    <input type="file" class="form-control" name="images[]">
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title d-flex">Imagenes</h4>
-                    <input type="file" class="dropify" name="imagen">
+                    <input type="file" class="form-control" name="images[]">
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <button type="submit" class="btn btn-primary mr-2">Registrar</button>
     <a href="{{route('products.index')}}" class="btn btn-light">
         Cancelar

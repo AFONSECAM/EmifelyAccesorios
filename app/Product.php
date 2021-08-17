@@ -31,7 +31,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->morphToMany('App\Image', 'imageable');
+        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function tags()
@@ -40,8 +40,7 @@ class Product extends Model
     }
 
     public function my_store($request)
-    {
-        dd($request);
+    {        
         $product = self::create([
             'code' => $request->code,
             'name' => $request->name,
@@ -87,8 +86,8 @@ class Product extends Model
     public function upload_files($request, $product)
     {
         $urlimages = [];
-        if ($request->hasFile('imagenes')) {
-            $images = $request->file('imagenes');
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
             foreach ($images as $image) {
                 $nombre = time() . $image->getClientOriginalName();
                 $ruta = public_path() . '/image';
@@ -96,7 +95,7 @@ class Product extends Model
                 $urlimages[]['url'] = '/image/' . $nombre;
             }
         }
-        dd($urlimages);
         $product->images()->createMany($urlimages);
+        dd($urlimages);
     }
 }

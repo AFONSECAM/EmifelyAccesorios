@@ -39,6 +39,7 @@ class ProductController extends Controller
     }
     public function store(StoreRequest $request, Product $product)
     {
+        /* dd($request->images); */
         $product->my_store($request);
         return redirect()->route('products.index');
     }

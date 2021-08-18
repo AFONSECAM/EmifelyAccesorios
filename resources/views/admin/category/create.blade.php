@@ -24,24 +24,40 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Registro de categorías</h4>
                     </div>
                     {!! Form::open(['route'=>'categories.store', 'method'=>'POST']) !!}
-                    @include('admin.category._form')
-                     <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                     <a href="{{route('categories.index')}}" class="btn btn-light">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descripción</label>
+                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="icon">Ícono</label>
+                        <select class="form-control" name="icon" id="icon">
+                            <option value="1">icon1</option>
+                            <option value="2">icon2</option>
+                            <option value="3">icon3</option>
+
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                    <a href="{{route('categories.index')}}" class="btn btn-light">
                         Cancelar
-                     </a>
-                     {!! Form::close() !!}
+                    </a>
+                    {!! Form::close() !!}
                 </div>
-                {{--  <div class="card-footer text-muted">
+                {{-- <div class="card-footer text-muted">
                     {{$categories->render()}}
-                </div>  --}}
-            </div>
+            </div> --}}
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('scripts')

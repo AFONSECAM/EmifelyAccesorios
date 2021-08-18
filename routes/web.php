@@ -42,59 +42,90 @@ Route::get('/', function () {
 });
 
 
+// RUTAS PARA BARCODE
+Route::get('/barcode', function () {
+    $products = Product::get();
+    return view('admin.product.barcode', compact('products'));
+});
+Route::get('print_barcode', 'ProductController@print_barcode')->name('print_barcode');
 
-Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
-Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');
-Route::post('sales/report_results', 'ReportController@report_results')->name('report.results');
-
+//RUTAS PARA BUSSINESS
 Route::resource('business', 'BusinessController')->names('business')->only([
     'index', 'update'
 ]);
+
+//RUTAS PARA CATEGORIES
+Route::resource('categories', 'CategoryController')->names('categories');
+
+//RUTAS PARA SUBCATEGORIES
+Route::resource('subcategories', 'SubcategoryController')->names('subcategories');
+Route::get('get_subcategories', 'AjaxController@get_subcategories')->name('get_subcategories');
+
+// RUTAS PARA PRODUCTS
+Route::resource('products', 'ProductController')->names('products');
+Route::post('upload/product/{id}/image', 'ProductController@upload_image')->name('upload.product.image');
+Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
+Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
+Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
+
+//RUTAS PARA PURCHASES
+Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
+    'edit', 'update', 'destroy'
+]);
+Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchases.pdf');
+Route::get('purchases/upload/{purchase}', 'PurchaseController@upload')->name('upload.purchases');
+Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');
+
+//RUTAS PARA SALES
+Route::resource('sales', 'SaleController')->names('sales')->except([
+    'edit', 'update', 'destroy'
+]);
+Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
+Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');
+Route::post('sales/report_results', 'ReportController@report_results')->name('report.results');
+Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
+Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
+Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
+
+
+
+
+
+
+
+
 Route::resource('printers', 'PrinterController')->names('printers')->only([
     'index', 'update'
 ]);
 
-Route::resource('categories', 'CategoryController')->names('categories');
+
+// RUTAS PARA CLIENTS
 Route::resource('clients', 'ClientController')->names('clients');
-Route::resource('products', 'ProductController')->names('products');
-Route::post('upload/product/{id}/image', 'ProductController@upload_image')->name('upload.product.image');
+
+// RUTAS PARA PROVIDERS
 Route::resource('providers', 'ProviderController')->names('providers');
-Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
-    'edit', 'update', 'destroy'
-]);
-Route::resource('sales', 'SaleController')->names('sales')->except([
-    'edit', 'update', 'destroy'
-]);
-Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchases.pdf');
-Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
-Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
 
-Route::get('purchases/upload/{purchase}', 'PurchaseController@upload')->name('upload.purchases');
 
-Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
-Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');
-Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
 
+
+
+// RUTAS PARA USERS
 Route::resource('users', 'UserController')->names('users');
 
+// RUTAS PARA ROLES
 Route::resource('roles', 'RoleController')->names('roles');
 
-Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
 
-Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
 
-Route::get('print_barcode', 'ProductController@print_barcode')->name('print_barcode');
+
+
 
 Route::get('/prueba', function () {
     return view('prueba');
 });
 
-Route::get('get_subcategories', 'AjaxController@get_subcategories')->name('get_subcategories');
 
-Route::get('/barcode', function () {
-    $products = Product::get();
-    return view('admin.product.barcode', compact('products'));
-});
+
 
 Auth::routes();
 

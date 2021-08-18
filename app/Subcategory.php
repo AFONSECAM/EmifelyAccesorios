@@ -20,7 +20,7 @@ class Subcategory extends Model
     {
         self::create([
             'name' => $request->name,
-            'slug'  => Str::slug($request->slug, '_'),
+            'slug'  => Str::slug($request->name, '_'),
             'description'  => $request->description,
             'category_id'  => $request->category_id
         ]);

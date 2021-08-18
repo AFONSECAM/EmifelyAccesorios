@@ -2,11 +2,11 @@
 @section('title','Gestión de categorías')
 @section('styles')
 <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+}
 </style>
 
 @endsection
@@ -31,20 +31,20 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Categorías</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
+                        {{-- <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('categories.create')}}" class="dropdown-item">Agregar</a>
-                              {{--  <button class="dropdown-item" type="button">Another action</button>
+                                <a href="{{route('categories.create')}}" class="dropdown-item">Agregar</a>
+                                {{-- <button class="dropdown-item" type="button">Another action</button>
                               <button class="dropdown-item" type="button">Something else here</button>  --}}
                             </div>
-                          </div>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -66,28 +66,69 @@
                                     </td>
                                     <td>{{$category->description}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['categories.destroy',$category], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['categories.destroy',$category], 'method'=>'DELETE'])
+                                        !!}
 
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('categories.edit', $category)}}" title="Editar">
+                                        <a class="jsgrid-button jsgrid-edit-button"
+                                            href="{{route('categories.edit', $category)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
-                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+
+                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit"
+                                            title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
 
+                                        <button type="button" class="jsgrid-button jsgrid-delete-button unstyled-button"
+                                            data-toggle="modal" data-target="#exampleModal-{{ $category->id}}"> <i
+                                                class="far fa-eye"></i></button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
-                                @endforeach
+                                <!-- Modal starts -->
+                                <div class="modal fade" id="exampleModal-{{$category->id}}" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel-{{$category->id}}" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel-{{$category->id}}">
+                                                    Registrar Subcategoría
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            {!! Form::open(['route'=>'subcategories.store', 'method'=>'POST']) !!}
+                                            <div class="modal-body">
+                                                <input type="hidden" name="category_id" value="{{$category->id}}">
+                                                <div class="form-group">
+                                                    <label for="name">Nombre</label>
+                                                    <input type="text" name="name" id="name" class="form-control"
+                                                        placeholder="Nombre" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">Descripción</label>
+                                                    <textarea class="form-control" name="description" id="description"
+                                                        rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                                                <button type="button" class="btn btn-light"
+                                                    data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                    <!-- Modal Ends -->
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$categories->render()}}
-                </div>  --}}
             </div>
+
         </div>
     </div>
 </div>

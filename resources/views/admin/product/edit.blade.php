@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('title','Editar producto')
 @section('styles')
+{!! Html::style('melody/vendors/summernote/dist/summernote-bs4.css') !!}
+{!! Html::style('melody/vendors/lightgallery/css/lightgallery.css') !!}
 @endsection
 @section('options')
 @endsection
@@ -20,89 +22,233 @@
             </ol>
         </nav>
     </div>
+    {!! Form::model($product,['route'=>['products.update',$product], 'method'=>'PUT','files' => true]) !!}
     <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
+        <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Edición de producto</h4>
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" name="name" id="name"
+                            class="form-control @error('name') is-invalid @enderror"
+                            value="{{ old('name', $product->name) }}">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="code">Código de barras</label>
+                                <input type="text" name="code" id="code"
+                                    class="form-control @error('code') is-invalid @enderror"
+                                    value="{{ old('code', $product->code) }}">
+                                @error('code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sell_price">Precio de venta</label>
+                                <input type="number" name="sell_price"
+                                    value="{{ old('sell_price', $product->sell_price) }}" id="sell_price"
+                                    class="form-control @error('sell_price') is-invalid @enderror"
+                                    aria-describedby="helpId" required>
+                                @error('sell_price')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
 
-                    {!! Form::model($product,['route'=>['products.update',$product], 'method'=>'PUT','files' => true]) !!}
-
-
                     <div class="form-group">
-                      <label for="name">Nombre</label>
-                      <input type="text" name="name" id="name" value="{{$product->name}}" class="form-control" aria-describedby="helpId" required>
+                        <label for="">Extracto</label>
+                        <textarea class="form-control @error('short_description') is-invalid @enderror"
+                            name="short_description" id="short_description"
+                            rows="3">{{ old('short_description', $product->short_description) }}</textarea>
+                        @error('short_description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="code">Código de barras</label>
-                        <input type="text" name="code" id="code" value="{{$product->code}}" class="form-control">
-                        <small id="helpId" class="text-muted">Campo opcional</small>
+                        <label for="">Descripción</label>
+                        <textarea name="long_description" id="summernoteExample" rows="8"
+                            class="form-control @error('long_description') is-invalid @enderror">{{ old('long_description', $product->long_description) }}</textarea>
+                        @error('long_description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
                     <div class="form-group">
-                        <label for="sell_price">Precio de venta</label>
-                        <input type="number" name="sell_price" id="sell_price" value="{{$product->sell_price}}" class="form-control" aria-describedby="helpId" required>
+                        <label for="category">Categoría</label>
+                        <select class="select2 form-control @error('category_id') is-invalid @enderror"
+                            name="category_id" id="category_id" style="width: 100%;">
+                            @foreach ($categories as $category)
+                            <option value="{{$category->id}}" @if ($category->id == $product->subcategory->category_id)
+                                selected
+                                @endif
+                                >{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                      <label for="category_id">Categoría</label>
-                      <select class="form-control" name="category_id" id="category_id">
-                        @foreach ($categories as $category)
-                        <option value="{{$category->id}}" 
-                            @if ($category->id == $product->category_id)
-                            selected
+                        <label for="subcategory_id">Subcategoria</label>
+                        <select class="select2 form-control @error('subcategory_id') is-invalid @enderror"
+                            name="subcategory_id" id="subcategory_id" style="width: 100%;">
+                            @if(isset($product->subcategory_id))
+                            <option value="{{ $product->subcategory_id}}">{{ $product->subcategory->name}}</option>
                             @endif
-                            >{{$category->name}}</option>
-                        @endforeach
-                      </select>
+                        </select>
+                        @error('subcategory_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="provider_id">Proveedor</label>
-                        <select class="form-control" name="provider_id" id="provider_id">
-                          @foreach ($providers as $product)
-                          <option value="{{$product->id}}"
-                            @if ($product->id == $product->provider_id)
-                            selected
-                            @endif
-                            >{{$product->name}}</option>
-                          @endforeach
+                        <select class="select2 form-control @error('provider_id') is-invalid @enderror"
+                            name="provider_id" id="provider_id" style="width: 100%;">
+                            @foreach ($providers as $provider)
+                            <option value="{{$provider->id}}" @if ($provider->id == $product->provider_id)
+                                selected
+                                @endif
+                                >{{$provider->name}}</option>
+                            @endforeach
                         </select>
+                        @error('provider_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-
-                    {{--  <div class="custom-file mb-4">
-                        <input type="file" class="custom-file-input" name="image" id="image" lang="es">
-                        <label class="custom-file-label" for="image">Seleccionar Archivo</label>
-                    </div>  --}}
-
-
-                   
-                    <div class="card-body">
-                        <h4 class="card-title d-flex">Imagen de producto
-                          <small class="ml-auto align-self-end">
-                            <a href="dropify.html" class="font-weight-light" target="_blank">Seleccionar Archivo</a>
-                          </small>
-                        </h4>
-                        <input type="file"  name="picture" id="picture" class="dropify" />
+                    <div class="form-group">
+                        <label for="">Etiquetas</label>
+                        <select class="select2 @error('tags[]') is-invalid @enderror" name="tags[]" id="tags"
+                            style="width: 100%;" multiple>
+                            @foreach ($tags as $tag)
+                            <option value="{{$tag->id}}"
+                                {{ collect($product->tags->pluck('id'))->contains($tag->id) ? 'selected' : ''}}>
+                                {{$tag->name}}
+                            </option>
+                            @endforeach
+                        </select>
+                        @error('tags[]')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-
-                     <button type="submit" class="btn btn-primary mr-2">Editar</button>
-                     <a href="{{route('products.index')}}" class="btn btn-light">
-                        Cancelar
-                     </a>
-                     {!! Form::close() !!}
+                    <div class="form-group">
+                        <h4 class="card-title">Cargar imágenes</h4>
+                        <div class="file-upload-wrapper">
+                            <div id="fileuploader">Subir</div>
+                        </div>
+                    </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$products->render()}}
-                </div>  --}}
             </div>
         </div>
     </div>
+    <div class="row grid-margin">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Imagenes del producto</h4>
+                    <div id="lightgallery" class="row lightGallery">
+                        @foreach($product->images as $image)
+                        <a href="{{$image->url}}" class="image-tile">
+                            <img src="{{$image->url}}" alt="image small">
+                        </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mr-2">Editar</button>
+    <a href="{{route('products.index')}}" class="btn btn-light">
+        Cancelar
+    </a>
+    {!! Form::close() !!}
 </div>
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/dropify.js') !!}
+{!! Html::script('melody/js/data-table.js') !!}
+{!! Html::script('melody/js/select2.js') !!}
+<script>
+$(document).ready(function() {
+    $('#category').select2();
+    $('#subcategory_id').select2();
+    $('#provider_id').select2();
+    $('#tags').select2();
+});
+</script>
+<script>
+(function($) {
+    'use strict';
+    if ($("#fileuploader").length) {
+        $("#fileuploader").uploadFile({
+            url: "/upload/product/{{$product->id}}/image",
+            fileName: "image"
+        });
+    }
+})(jQuery);
+</script>
+
+
+{!! Html::script('melody/vendors/tinymce/tinymce.min.js') !!}
+{!! Html::script('melody/vendors/tinymce/themes/modern/theme.js') !!}
+{!! Html::script('melody/vendors/summernote/dist/summernote-bs4.min.js') !!}
+{!! Html::script('melody/vendors/lightgallery/js/lightgallery-all.min.js') !!}
+{!! Html::script('melody/js/editorDemo.js') !!}
+{!! Html::script('melody/js/light-gallery.js') !!}
+
+
+<script>
+var category = $('#category_id');
+var subcategory = $('#subcategory_id');
+category.change(function() {
+    $.ajax({
+        url: "{{ route('get_subcategories')}}",
+        method: 'GET',
+        data: {
+            category: category.val(),
+        },
+        success: function(data) {
+            console.log(data);
+            subcategory.empty();
+            subcategory.append('<option disabled selected>-- Seleccione algo --</option>');
+            $.each(data, function(index, element) {
+                subcategory.append('<option value="' + element.id + '">' + element.name +
+                    '</option>');
+            })
+
+        }
+    })
+})
+</script>
+
 @endsection

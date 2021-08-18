@@ -28,21 +28,23 @@
                     {!! Form::open(['route'=>'products.store', 'method'=>'POST','files' => true]) !!}
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" aria-describedby="helpId"
-                            required>
+                        <input type="text" name="name" id="name"
+                            class="form-control @error('name') is-invalid @enderror" aria-describedby="helpId" required>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="code">Código de barras</label>
-                                <input type="text" name="code" id="code" class="form-control">
+                                <input type="text" name="code" id="code"
+                                    class="form-control @error('code') is-invalid @enderror">
                                 <small id="helpId" class="text-muted">Campo opcional</small>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sell_price">Precio de venta</label>
-                                <input type="number" name="sell_price" id="sell_price" class="form-control"
+                                <input type="number" name="sell_price" id="sell_price"
+                                    class="form-control @error('sell_price') is-invalid @enderror"
                                     aria-describedby="helpId" required>
                             </div>
                         </div>
@@ -59,9 +61,6 @@
                         <textarea name="long_description" id="summernoteExample" rows="8"
                             class="form-control"></textarea>
                     </div>
-
-
-
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
@@ -78,7 +77,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="category">Categoría</label>
-                        <select class="select2 form-control" name="" id="category" style="width: 100%;">
+                        <select class="select2 form-control" name="category" id="category" style="width: 100%;">
                             @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -86,8 +85,8 @@
                     </div>
                     <div class="form-group">
                         <label for="subcategory_id">Subcategoria</label>
-                        <select class="select2 form-control" name="subcategory_id" id="subcategory_id"
-                            style="width: 100%;">
+                        <select class="select2 form-control @error('subcategory_id') is-invalid @enderror"
+                            name="subcategory_id" id="subcategory_id" style="width: 100%;">
                             @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -114,16 +113,6 @@
             </div>
         </div>
     </div>
-    {{-- <div class="row">
-        <div class="col-12 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title d-flex">Imagenes</h4>
-                    <input type="file" class="form-control" name="images[]">
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <button type="submit" class="btn btn-primary mr-2">Registrar</button>
     <a href="{{route('products.index')}}" class="btn btn-light">
         Cancelar

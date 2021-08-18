@@ -1,8 +1,8 @@
-(function($) {
-  'use strict';
+(function ($) {
+  'use strict'; a
   if ($("#fileuploader").length) {
     $("#fileuploader").uploadFile({
-      url: "YOUR_FILE_UPLOAD_URL",
+      url: "/upload/product/{{$product}}/image",
       fileName: "myfile"
     });
   }

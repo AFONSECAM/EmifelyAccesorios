@@ -45,7 +45,6 @@ Route::get('/', function () {
 
 Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
 Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');
-
 Route::post('sales/report_results', 'ReportController@report_results')->name('report.results');
 
 Route::resource('business', 'BusinessController')->names('business')->only([
@@ -58,6 +57,7 @@ Route::resource('printers', 'PrinterController')->names('printers')->only([
 Route::resource('categories', 'CategoryController')->names('categories');
 Route::resource('clients', 'ClientController')->names('clients');
 Route::resource('products', 'ProductController')->names('products');
+Route::post('upload/product/{id}/image', 'ProductController@upload_image')->name('upload.product.image');
 Route::resource('providers', 'ProviderController')->names('providers');
 Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
     'edit', 'update', 'destroy'
@@ -88,6 +88,8 @@ Route::get('print_barcode', 'ProductController@print_barcode')->name('print_barc
 Route::get('/prueba', function () {
     return view('prueba');
 });
+
+Route::get('get_subcategories', 'AjaxController@get_subcategories')->name('get_subcategories');
 
 Route::get('/barcode', function () {
     $products = Product::get();

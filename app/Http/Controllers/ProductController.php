@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Provider;
+use App\Subcategory;
 use App\Tag;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -38,7 +39,7 @@ class ProductController extends Controller
         return view('admin.product.create', compact('categories', 'providers', 'tags'));
     }
     public function store(StoreRequest $request, Product $product)
-    {        
+    {
         $product->my_store($request);
         return redirect()->route('products.index');
     }
@@ -96,5 +97,20 @@ class ProductController extends Controller
         $products = Product::get();
         $pdf = PDF::loadView('admin.product.barcode', compact('products'));
         return $pdf->download('codigos_de_barras.pdf');
+    }
+
+    public function upload_image(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $nombre = time() . $image->getClientOriginalName();
+            $ruta = public_path() . '/image';
+            $image->move($ruta, $nombre);
+            $urlimage = '/image/' . $nombre;
+        }
+        $product->images()->create([
+            'url' => $urlimage
+        ]);
     }
 }

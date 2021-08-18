@@ -20,9 +20,9 @@ class Product extends Model
         'provider_id',
     ];
 
-    public function category()
+    public function subcategory()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Subcategory::class);
     }
     public function provider()
     {
@@ -63,17 +63,16 @@ class Product extends Model
             'code' => $request->code,
             'name' => $request->name,
             'slug'  => Str::slug($request->slug, '_'),
-            'stock' => $request->stock,
             'sell_price' => $request->sell_price,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
-            'status' => $request->status,
             'subcategory_id' => $request->subcategory_id,
             'provider_id' => $request->provider_id
         ]);
         $this->tags()->sync($request->get('tags'));
-        $this->generar_codigo($this);
-        $this->upload_files($request, $this);
+        if ($request->code == "") {
+            $this->generar_codigo($this);
+        }
     }
 
     public function generar_codigo($product)

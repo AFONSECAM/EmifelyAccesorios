@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('title','Registrar producto')
 @section('styles')
+{!! Html::style('melody/vendors/summernote/dist/summernote-bs4.css') !!}
 @endsection
 @section('options')
 @endsection
@@ -55,9 +56,12 @@
 
                     <div class="form-group">
                         <label for="">Descripción</label>
-                        <textarea class="form-control" name="long_description" id="long_description"
-                            rows="8"></textarea>
+                        <textarea name="long_description" id="summernoteExample" rows="8"
+                            class="form-control"></textarea>
                     </div>
+
+
+
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
@@ -132,6 +136,12 @@
 {!! Html::script('melody/js/dropify.js') !!}
 {!! Html::script('melody/js/dropzone.js') !!}
 {!! Html::script('melody/js/select2.js') !!}
+
+
+{!! Html::script('melody/vendors/tinymce/tinymce.min.js') !!}
+{!! Html::script('melody/vendors/tinymce/themes/modern/theme.js') !!}
+{!! Html::script('melody/vendors/summernote/dist/summernote-bs4.min.js') !!}
+{!! Html::script('melody/js/editorDemo.js') !!}
 <script>
 $(document).ready(function() {
     $('#category').select2();

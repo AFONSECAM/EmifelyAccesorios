@@ -40,7 +40,7 @@ class Product extends Model
     }
 
     public function my_store($request)
-    {        
+    {
         $product = self::create([
             'code' => $request->code,
             'name' => $request->name,
@@ -96,6 +96,5 @@ class Product extends Model
             }
         }
         $product->images()->createMany($urlimages);
-        dd($urlimages);
     }
 }

@@ -15,6 +15,19 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     {!! Html::style('melody/css/style.css') !!}
+    <style>
+        .tarjeta{  
+    /* background: #ffffff; */
+    background: rgb(250,219,216);
+background: linear-gradient(0deg, rgba(250,219,216,1) 0%, rgba(232,248,245,1) 100%);
+    box-shadow:  21px 21px 23px #a7a1ab,
+             -21px -21px 23px #ffffff;
+}
+.tarjeta2 {
+    background: rgb(255,255,255)!important;
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,219,216,1) 0%, rgba(232,248,245,1) 60%)!important;
+}
+    </style>
     @yield('styles')
     <!-- endinject -->
     <link rel="shortcut icon" href="http://www.urbanui.com/" />
@@ -30,7 +43,7 @@
                 <a class="navbar-brand brand-logo-mini" href="index-2.html"><img
                         src="{{asset('melody/images/logo/log.png')}}" alt="logo" /></a>
             </div>
-            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+            <div class="tarjeta2 navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="fas fa-bars"></span>
                 </button>

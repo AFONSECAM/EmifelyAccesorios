@@ -7,6 +7,7 @@
     padding: 0;
     background: none;
 }
+
 </style>
 @endsection
 @section('options')
@@ -24,37 +25,37 @@
     @foreach ($totales as $total)
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
-            <div class="card text-white bg-warning">
+            <div class="card tarjeta">
 
                 <div class="card-body pb-0">
                     <div class="float-right">
                         <i class="fas fa-cart-arrow-down fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>$ {{$total->totalcompra}} (MES ACTUAL)</strong>
+                    <div class="text-value h5">$ {{$total->totalcompra}}(MES ACTUAL)
                     </div>
-                    <div class="h3">Compras</div>
+                    <div class="h4">Compras</div>
                 </div>
                 <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('purchases.index')}}" class="small-box-footer h4">Compras <i
+                    <a href="{{route('purchases.index')}}" class="small-box-footer h5">Compras <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
 
             </div>
         </div>
         <div class="col-md-6 grid-margin stretch-card">
-            <div class="card text-white bg-info">
+            <div class="card tarjeta">
 
                 <div class="card-body pb-0">
 
                     <div class="float-right">
                         <i class="fas fa-shopping-cart fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>$ {{$total->totalventa}} (MES ACTUAL) </strong>
+                    <div class="text-value h5"><strong>$ {{$total->totalventa}} (MES ACTUAL) </strong>
                     </div>
-                    <div class="h3">Ventas</div>
+                    <div class="h4">Ventas</div>
                 </div>
                 <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('sales.index')}}" class="small-box-footer h4">Ventas <i
+                    <a href="{{route('sales.index')}}" class="small-box-footer h5">Ventas <i
                             class="fa fa-arrow-circle-right"></i></a>
                 </div>
 
@@ -62,23 +63,24 @@
         </div>
     </div>
     @endforeach
-
-    <div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">
-                    <i class="fas fa-gift"></i>
-                    Ventas diarias
-                </h4>
-                <canvas id="ventas_diarias" height="100"></canvas>
-                <div id="orders-chart-legend" class="orders-chart-legend"></div>
-            </div>
-        </div>
-    </div>
+   <div class="row">
+       <div class="col-md-12 grid-margin stretch-card">
+           <div class="card tarjeta">
+               <div class="card-body">
+                   <h4 class="card-title">
+                       <i class="fas fa-gift"></i>
+                       Ventas diarias
+                   </h4>
+                   <canvas id="ventas_diarias" height="100"></canvas>
+                   <div id="orders-chart-legend" class="orders-chart-legend"></div>
+               </div>
+           </div>
+       </div>
+   </div>
 
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
+            <div class="card tarjeta">
                 <div class="card-body">
                     <h4 class="card-title">
                         <i class="fas fa-gift"></i>
@@ -90,7 +92,7 @@
             </div>
         </div>
         <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
+            <div class="card tarjeta">
                 <div class="card-body">
                     <h4 class="card-title">
                         <i class="fas fa-chart-line"></i>
@@ -104,7 +106,7 @@
 
     <div class="row">
         <div class="col-12 grid-margin">
-            <div class="card">
+            <div class="card tarjeta">
                 <div class="card-body">
                     <h4 class="card-title">
                         <i class="fas fa-envelope"></i>
@@ -152,7 +154,7 @@
 @endsection
 @section('scripts')
 {!! Html::script('melody/js/data-table.js') !!}
-!! Html::script('melody/js/chart.js') !!}
+{!! Html::script('melody/js/chart.js') !!}
 <script>
 $(function() {
     var varCompra = document.getElementById('compras').getContext('2d');

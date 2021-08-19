@@ -2,20 +2,20 @@
 @section('title','Gestión de compras')
 @section('styles')
 <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+}
 </style>
 
 @endsection
 @section('create')
 <li class="nav-item d-none d-lg-flex">
     <a class="nav-link" href="{{route('purchases.create')}}">
-      <span class="btn btn-primary">+ Registrar compra</span>
+        <span class="btn btn-primary">+ Registrar compra</span>
     </a>
-  </li>
+</li>
 @endsection
 @section('options')
 @endsection
@@ -38,20 +38,19 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Compras</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
+                        <div class="card-title"></div>
+                        <div class="btn-group pb-2">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('purchases.create')}}" class="dropdown-item">Registrar</a>
-                              {{--  <button class="dropdown-item" type="button">Another action</button>
+                                <a href="{{route('purchases.create')}}" class="dropdown-item">Registrar</a>
+                                {{-- <button class="dropdown-item" type="button">Another action</button>
                               <button class="dropdown-item" type="button">Something else here</button>  --}}
                             </div>
-                          </div>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -78,24 +77,28 @@
 
                                     @if ($purchase->status == 'VALID')
                                     <td>
-                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
+                                        <a class="jsgrid-button btn btn-success"
+                                            href="{{route('change.status.purchases', $purchase)}}" title="Editar">
                                             Activo <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
+                                        <a class="jsgrid-button btn btn-danger"
+                                            href="{{route('change.status.purchases', $purchase)}}" title="Editar">
                                             Cancelado <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                     @endif
                                     <td style="width: 50px;">
 
-                                        <a href="{{route('purchases.pdf', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                        {{--  <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>  --}}
-                                        <a href="{{route('purchases.show', $purchase)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                   
-                                      
+                                        <a href="{{route('purchases.pdf', $purchase)}}"
+                                            class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                        {{-- <a href="#" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>  --}}
+                                        <a href="{{route('purchases.show', $purchase)}}"
+                                            class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -103,12 +106,12 @@
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
+                {{-- <div class="card-footer text-muted">
                     {{$purchases->render()}}
-                </div>  --}}
-            </div>
+            </div> --}}
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('scripts')

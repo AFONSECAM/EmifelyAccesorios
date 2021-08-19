@@ -2,11 +2,11 @@
 @section('title','Gestión de usuarios del sistema')
 @section('styles')
 <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+}
 </style>
 
 @endsection
@@ -31,20 +31,19 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Usuarios del sistema</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
+                        <div class="card-title"></div>
+                        <div class="btn-group pb-2">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('users.create')}}" class="dropdown-item">Agregar</a>
-                              {{--  <button class="dropdown-item" type="button">Another action</button>
+                                <a href="{{route('users.create')}}" class="dropdown-item">Agregar</a>
+                                {{-- <button class="dropdown-item" type="button">Another action</button>
                               <button class="dropdown-item" type="button">Something else here</button>  --}}
                             </div>
-                          </div>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -68,11 +67,13 @@
                                     <td style="width: 50px;">
                                         {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE']) !!}
 
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('users.edit', $user)}}" title="Editar">
+                                        <a class="jsgrid-button jsgrid-edit-button"
+                                            href="{{route('users.edit', $user)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
-                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+
+                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit"
+                                            title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
 
@@ -84,12 +85,12 @@
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
+                {{-- <div class="card-footer text-muted">
                     {{$users->render()}}
-                </div>  --}}
-            </div>
+            </div> --}}
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('scripts')

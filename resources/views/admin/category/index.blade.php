@@ -33,9 +33,9 @@
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Categorías</h4>
                         {{-- <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
+                        <div class="card-title"></div>
+                        <div class="btn-group pb-2">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>

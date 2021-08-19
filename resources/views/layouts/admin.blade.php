@@ -25,10 +25,10 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w"><img src="{{asset('melody/images/logo.svg')}}"
-                        alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="{{asset('melody/images/logo-mini.svg')}}"
-                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo">
+                    <img src="{{asset('melody/images/logo/log.png')}}" alt="logo" class="rounded" /></a>
+                <a class="navbar-brand brand-logo-mini" href="index-2.html"><img
+                        src="{{asset('melody/images/logo/log.png')}}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -56,13 +56,13 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            {{--  <a class="dropdown-item">
+                            {{-- <a class="dropdown-item">
                                 <i class="fas fa-cog text-primary"></i>
                                 Settings
                             </a>  --}}
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"
-                            onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="tooltip"
+                                data-placement="top" title="" data-original-title="Logout" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                                 <i class="fas fa-power-off text-primary"></i>
                                 Logout
@@ -119,7 +119,9 @@
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.
                             Todos los derechos reservados.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">Texvn Online</a> </> <i class="far fa-heart text-danger"></i></span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a
+                                href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">Texvn Online</a> </> <i
+                                class="far fa-heart text-danger"></i></span>
                     </div>
                 </footer>
                 <!-- partial -->

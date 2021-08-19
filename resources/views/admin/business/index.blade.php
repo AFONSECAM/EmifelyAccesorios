@@ -2,12 +2,11 @@
 @section('title','Gestión de empresa')
 @section('styles')
 <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-    }
-
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+}
 </style>
 
 @endsection
@@ -34,79 +33,73 @@
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Gestión de empresa</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        {{--  <div class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('clients.create')}}" class="dropdown-item">Agregar</a>
-                        business
+                        <div class="card-title"></div>
+
                     </div>
-                </div> --}}
-            </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <strong><i class="fas fa-file-signature mr-1"></i> Nombre </strong>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <strong><i class="fas fa-file-signature mr-1"></i> Nombre </strong>
 
-                    <p class="text-muted">
-                        {{$business->name}}
-                    </p>
-                    <hr>
-                    <strong><i class="fas fa-align-left mr-1"></i> Descripción</strong>
+                            <p class="text-muted">
+                                {{$business->name}}
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-align-left mr-1"></i> Descripción</strong>
 
-                    <p class="text-muted">
-                        {{$business->description}}
-                    </p>
-                    <hr>
-                    <strong><i class="fas fa-map-marked-alt mr-1"></i> Dirección</strong>
+                            <p class="text-muted">
+                                {{$business->description}}
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-map-marked-alt mr-1"></i> Dirección</strong>
 
-                    <p class="text-muted">
-                        {{$business->address}}
-                    </p>
-                    <hr>
-                    {{--  <strong><i class="fas fa-mobile-alt mr-1"></i> Teléfono</strong>
+                            <p class="text-muted">
+                                {{$business->address}}
+                            </p>
+                            <hr>
+                            {{-- <strong><i class="fas fa-mobile-alt mr-1"></i> Teléfono</strong>
                             
                             <p class="text-muted">{{$business->telephone}}</p>
-                    <hr> --}}
-                </div>
-                <div class="form-group col-md-6">
-                    <strong><i class="far fa-address-card mr-1"></i> RUC</strong>
+                            <hr> --}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <strong><i class="far fa-address-card mr-1"></i> RUC</strong>
 
-                    <p class="text-muted">{{$business->ruc}}</p>
-                    <hr>
-                    <strong><i class="far fa-envelope mr-1"></i> Correo electrónico</strong>
+                            <p class="text-muted">{{$business->ruc}}</p>
+                            <hr>
+                            <strong><i class="far fa-envelope mr-1"></i> Correo electrónico</strong>
 
-                    <p class="text-muted">{{$business->email}}</p>
-                    <hr>
-                    {{--  <strong><i class="far fa-calendar-check mr-1"></i> Fecha de alta</strong>
+                            <p class="text-muted">
+                                {{($business->email == null) ? 'email@dominio.com' : $business->email}}
+                            </p>
+                            <hr>
+                            {{-- <strong><i class="far fa-calendar-check mr-1"></i> Fecha de alta</strong>
                            
                             <p class="text-muted">{{$business->discharge_date}}</p>
-                    <hr> --}}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <strong><i class="fas fa-exclamation-circle mr-1"></i> Logo</strong><br>
-                        </div>
-                        <div class="col-md-6">
-                            <img style="width:50px ; height:50px ;" src="{{asset('image/'.$business->logo)}}"
-                                class="rounded float-left" alt="logo">
+                            <hr> --}}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong><i class="fas fa-exclamation-circle mr-1"></i> Logo</strong><br>
+                                </div>
+                                <div class="col-md-6">
+                                    <img style="width:50px ; height:40px ;" src="{{asset('image/'.$business->logo)}}"
+                                        class="rounded float-left" alt="logo">
+                                </div>
+                            </div>
+                            <hr>
                         </div>
                     </div>
-                    <hr>
+
+                </div>
+                <div class="card-footer text-muted">
+
+                    <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal"
+                        data-target="#exampleModal-2">Actualizar</button>
+
                 </div>
             </div>
-
-        </div>
-        <div class="card-footer text-muted">
-
-            <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal-2">Actualizar</button>
-
         </div>
     </div>
-</div>
-</div>
 </div>
 
 
@@ -172,7 +165,7 @@
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
             </div>
 
-        {!! Form::close() !!}
+            {!! Form::close() !!}
 
         </div>
     </div>

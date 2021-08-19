@@ -67,7 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($category->products as $product)
+                               {{--  @foreach ($subcategory->products as $product)
                                 <tr>
                                     <th scope="row">{{$product->id}}</th>
                                     <td>
@@ -104,7 +104,7 @@
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>

@@ -29,7 +29,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
+            <div class="card tarjeta">
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between">
@@ -54,7 +54,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombre</th>
+                                    <th class="text-center">Nombre</th>
                                     <th>Stock</th>
                                     <th>Estado</th>
                                     <th>Categoría</th>
@@ -65,7 +65,7 @@
                                 @foreach ($products as $product)
                                 <tr>
                                     <th scope="row">{{$product->id}}</th>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{route('products.show',$product)}}">{{$product->name}}</a>
                                     </td>
                                     <td>{{$product->stock}}</td>

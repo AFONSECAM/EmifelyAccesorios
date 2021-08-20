@@ -16,17 +16,36 @@
     <!-- inject:css -->
     {!! Html::style('melody/css/style.css') !!}
     <style>
-        .tarjeta{  
-    /* background: #ffffff; */
-    background: rgb(250,219,216);
-background: linear-gradient(0deg, rgba(250,219,216,1) 0%, rgba(232,248,245,1) 100%);
-    box-shadow:  21px 21px 23px #a7a1ab,
-             -21px -21px 23px #ffffff;
-}
-.tarjeta2 {
-    background: rgb(255,255,255)!important;
-background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,219,216,1) 0%, rgba(232,248,245,1) 60%)!important;
-}
+    .tarjeta {
+        /* background: #ffffff; */
+        /* background: rgb(250, 219, 216); */
+        /* background: linear-gradient(145deg, #f0f0f0, #cacaca); */
+        /* background: linear-gradient(0deg, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 100%); */
+        /* box-shadow: 21px 21px 23px #a7a1ab,
+            -21px -21px 23px #ffffff; */
+        box-shadow: 8px 8px 6px #5a5a5a,
+            -8px -8px 6px #cacaca;
+        background: linear-gradient(-45deg, rgba(255, 255, 255, .2) 60%, rgba(255, 255, 255, .05) 60%, rgba(255, 255, 255, .05) 80%, rgba(0, 0, 0, .1) 80%);
+    }
+
+    .tarjeta2 {
+        /* background: rgb(255, 255, 255) !important; */
+        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 60%) !important;
+    }
+
+    .tarjeta3 {
+        /* background: rgb(255, 255, 255) !important; */
+        background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 60%) !important;
+    }
+
+    .tarjeta4 {
+        /* background: rgb(255, 255, 255) !important; */
+        background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 60%) !important;
+    }
+
+    .content-wrapper {
+        background: linear-gradient(0deg, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 100%);
+    }
     </style>
     @yield('styles')
     <!-- endinject -->
@@ -43,7 +62,7 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,219,216,1) 0
                 <a class="navbar-brand brand-logo-mini" href="index-2.html"><img
                         src="{{asset('melody/images/logo/log.png')}}" alt="logo" /></a>
             </div>
-            <div class="tarjeta2 navbar-menu-wrapper d-flex align-items-stretch">
+            <div class="tarjeta3 navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="fas fa-bars"></span>
                 </button>
@@ -128,13 +147,13 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,219,216,1) 0
                 @yield('content')
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-                <footer class="footer">
+                <footer class="footer tarjeta4">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.
                             Todos los derechos reservados.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a
-                                href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">Texvn Online</a> </> <i
-                                class="far fa-heart text-danger"></i></span>
+                                href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">Emifely Accesorios</a>
+                            </> <i class="far fa-heart text-danger"></i></span>
                     </div>
                 </footer>
                 <!-- partial -->

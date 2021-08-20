@@ -29,7 +29,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
+            <div class="card tarjeta">
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between">

@@ -1,4 +1,4 @@
-<nav class="sidebar sidebar-offcanvas tarjeta" id="sidebar">
+<nav class="sidebar sidebar-offcanvas tarjeta2" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
             <div class="nav-link">

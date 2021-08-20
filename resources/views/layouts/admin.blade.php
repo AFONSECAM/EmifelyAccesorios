@@ -16,7 +16,12 @@
     <!-- inject:css -->
     {!! Html::style('melody/css/style.css') !!}
     <style>
+    body {
+        font-size: 15px !important;
+    }
+
     .tarjeta {
+        font-size: 15px !important;
         /* background: #ffffff; */
         /* background: rgb(250, 219, 216); */
         /* background: linear-gradient(145deg, #f0f0f0, #cacaca); */
@@ -25,20 +30,23 @@
             -21px -21px 23px #ffffff; */
         box-shadow: 8px 8px 6px #5a5a5a,
             -8px -8px 6px #cacaca;
-        background: linear-gradient(-45deg, rgba(255, 255, 255, .2) 60%, rgba(255, 255, 255, .05) 60%, rgba(255, 255, 255, .05) 80%, rgba(0, 0, 0, .1) 80%);
+        background: linear-gradient(-45deg, rgba(255, 255, 255, .2) 70%, rgba(255, 255, 255, .05) 60%, rgba(255, 255, 255, .05) 80%, rgba(69, 209, 127, .07) 80%);
     }
 
     .tarjeta2 {
+        font-size: 15px !important;
         /* background: rgb(255, 255, 255) !important; */
         background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 60%) !important;
     }
 
     .tarjeta3 {
+        font-size: 15px !important;
         /* background: rgb(255, 255, 255) !important; */
         background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 60%) !important;
     }
 
     .tarjeta4 {
+        font-size: 15px !important;
         /* background: rgb(255, 255, 255) !important; */
         background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(250, 219, 216, 1) 0%, rgba(232, 248, 245, 1) 60%) !important;
     }

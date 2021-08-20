@@ -52,7 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombre</th>
+                                    <th class="text-center">Nombre</th>
                                     <th>Descripción</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -61,7 +61,7 @@
                                 @foreach ($categories as $category)
                                 <tr>
                                     <th scope="row">{{$category->id}}</th>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{route('categories.show',$category)}}">{{$category->name}}</a>
                                     </td>
                                     <td>{{$category->description}}</td>

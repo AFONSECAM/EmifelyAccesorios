@@ -33,7 +33,6 @@
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between">
-                        {{-- <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="card-title"></div>
                         <div class="btn-group pb-2">
                             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,8 +40,6 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="{{route('categories.create')}}" class="dropdown-item">Agregar</a>
-                                {{-- <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>  --}}
                             </div>
                         </div>
                     </div>
@@ -81,7 +78,7 @@
 
                                         <button type="button" class="jsgrid-button jsgrid-delete-button unstyled-button"
                                             data-toggle="modal" data-target="#exampleModal-{{ $category->id}}"> <i
-                                                class="far fa-eye"></i></button>
+                                                class="far fa-plus-square" title="Agregar subcategoría"></i></button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
@@ -122,7 +119,8 @@
                                         </div>
                                     </div>
                                     <!-- Modal Ends -->
-                                    @endforeach
+                                </div>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

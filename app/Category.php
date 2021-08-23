@@ -17,6 +17,11 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
+
     //Funcion para hacer el store del controlador
     public function my_store($request)
     {

@@ -59,7 +59,10 @@ Route::resource('categories', 'CategoryController')->names('categories');
 
 //RUTAS PARA SUBCATEGORIES
 Route::resource('subcategories', 'SubcategoryController')->names('subcategories');
+
+//RUTAS PARA AJAX
 Route::get('get_subcategories', 'AjaxController@get_subcategories')->name('get_subcategories');
+Route::get('getProductsBySubcategory', 'AjaxController@getProductsBySubcategory')->name('getProductsBySubcategory');
 
 // RUTAS PARA PRODUCTS
 Route::resource('products', 'ProductController')->names('products');

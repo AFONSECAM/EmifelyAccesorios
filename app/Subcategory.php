@@ -16,6 +16,11 @@ class Subcategory extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function my_store($request)
     {
         self::create([
@@ -31,9 +36,8 @@ class Subcategory extends Model
     {
         $this->update([
             'name' => $request->name,
-            'slug'  => Str::slug($request->slug, '_'),
+            'slug'  => Str::slug($request->name, '_'),
             'description'  => $request->description,
-            'category_id'  => $request->category_id
         ]);
     }
 }

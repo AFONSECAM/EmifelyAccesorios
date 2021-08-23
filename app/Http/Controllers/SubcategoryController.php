@@ -36,7 +36,10 @@ class SubcategoryController extends Controller
     public function update(Request $request, Subcategory $subcategory)
     {
         $subcategory->my_update($request);
-        return redirect()->route('subcategories.index');
+        $category = $subcategory->category;
+        $subcategories = $category->subcategories;
+        return view('admin.category.show', compact('category', 'subcategories'))->with('msg', "Se ha actualizado corremtamente la subcategoría");
+        // return back()->with('msg', 'Se ha actualizado correctamente!');
     }
     public function destroy(Subcategory $subcategory)
     {

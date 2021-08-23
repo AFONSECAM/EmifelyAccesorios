@@ -30,11 +30,13 @@ class CategoryController extends Controller
     public function store(StoreRequest $request, Category $category)
     {
         $category->my_store($request);
-        return redirect()->route('categories.index');
+        return back();
+        // return redirect()->route('categories.index');
     }
     public function show(Category $category)
     {
-        return view('admin.category.show', compact('category'));
+        $subcategories = $category->subcategories;
+        return view('admin.category.show', compact('category', 'subcategories'));
     }
     public function edit(Category $category)
     {
@@ -48,6 +50,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return back();
+        // return redirect()->route('categories.index');
     }
 }

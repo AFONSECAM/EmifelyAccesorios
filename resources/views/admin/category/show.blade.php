@@ -1,12 +1,12 @@
 @extends('layouts.admin')
-@section('title','Productos de categoría')
+@section('title','Categoria ' . $category->name)
 @section('styles')
 <style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-      }
+.unstyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+}
 </style>
 @endsection
 @section('create')
@@ -22,7 +22,7 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Productos que pertenecen a {{$category->name}}
+            Detalles categoría {{ $category->name}}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -33,25 +33,61 @@
         </nav>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
-
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Productos de la categoría {{$category->name}}</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
-                        <div class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{route('products.create')}}" class="dropdown-item">Agregar</a>
-                              <a class="dropdown-item" href="{{route('print_barcode')}}">Exportar códigos de barras</a> 
-                              {{--  <button class="dropdown-item" type="button">Another action</button>
-                              <button class="dropdown-item" type="button">Something else here</button>  --}}
+                    <h4 class="card-title">
+                        <i class="far fa-futbol"></i>
+                        {{$category->name}}
+                    </h4>
+                    <ul class="solid-bullet-list">
+                        <li>
+                            <h5>4 people shared a post
+                                <span class="float-right text-muted font-weight-normal small">8:30 AM</span>
+                            </h5>
+                            <p class="text-muted">It was an awesome work!</p>
+                            <div class="image-layers">
+                                <div class="img-sm profile-image-text bg-warning rounded-circle image-layer-item">M
+                                </div>
+                                <img class="img-sm rounded-circle image-layer-item" src="images/faces/face3.jpg"
+                                    alt="profile">
+                                <img class="img-sm rounded-circle image-layer-item" src="images/faces/face5.jpg"
+                                    alt="profile">
+                                <img class="img-sm rounded-circle image-layer-item" src="images/faces/face8.jpg"
+                                    alt="profile">
                             </div>
-                          </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="card-footer">
+                    {!! Form::open(['route'=>['categories.destroy',$category], 'method'=>'DELETE'])
+                    !!}
+
+
+                    <a href="{{route('categories.edit', $category)}}"
+                        class="btn btn-sm btn-info btn btn-outlline-dark">Editar</a>
+                    <button type="submit"
+                        class="btn btn-sm btn-danger btn btn-outlline-dark float-right">Eliminar</button>
+
+
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="card-title">Subcategorías</div>
+                        <div class="btn-group pb-2">
+                            <button class="btn btn-sm btn-primary btn-icon-text" data-toggle="modal"
+                                data-target="#createModal">
+                                Agregar <i class="btn-icon-append fas fa-plus"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -59,60 +95,98 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Stock</th>
-                                    <th>Estado</th>
-                                    <th>Categoría</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th>Descripción</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               {{--  @foreach ($subcategory->products as $product)
+                                @foreach($subcategories as $subcategory)
                                 <tr>
-                                    <th scope="row">{{$product->id}}</th>
-                                    <td>
-                                        <a href="{{route('products.show',$product)}}">{{$product->name}}</a>
+                                    <th scope="row">{{$subcategory->id}}</th>
+                                    <td class=" text-center">
+                                        <a href="#" class="getProducts"
+                                            data-artid="{{$subcategory->id}}">{{$subcategory->name}}</a>
                                     </td>
-                                    <td>{{$product->stock}}</td>
-                                    @if ($product->status == 'ACTIVE')
-                                    <td>
-                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.products', $product)}}" title="Editar">
-                                            Activo <i class="fas fa-check"></i>
-                                        </a>
-                                    </td>
-                                    @else
-                                    <td>
-                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.products', $product)}}" title="Editar">
-                                            Desactivado <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                    @endif
-                                    
-
-                                    <td>{{$product->category->name}}</td>
+                                    <td>{{$subcategory->description}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['subcategories.destroy',$subcategory],
+                                        'method'=>'DELETE'])
+                                        !!}
 
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('products.edit', $product)}}" title="Editar">
+                                        <a class="jsgrid-button jsgrid-edit-button"
+                                            href="{{route('subcategories.edit', $subcategory)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
-                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
+
+                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit"
+                                            title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
 
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-
-
+                    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="createModal">
+                                        Registrar Subcategoría
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                {!! Form::open(['route'=>'subcategories.store', 'method'=>'POST']) !!}
+                                <div class="modal-body">
+                                    <input type="hidden" name="category_id" value="{{$category->id}}">
+                                    <div class="form-group">
+                                        <label for="name">Nombre</label>
+                                        <input type="text" name="name" id="name" class="form-control"
+                                            placeholder="Nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Descripción</label>
+                                        <textarea class="form-control" name="description" id="description"
+                                            rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer text-muted">
-                    <a href="{{route('categories.index')}}" class="btn btn-primary float-right">Regresar</a>
+            </div>
+        </div>
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="card-title">Productos</div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="products" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Existencias</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,4 +197,38 @@
 @section('scripts')
 {!! Html::script('melody/js/profile-demo.js') !!}
 {!! Html::script('melody/js/data-table.js') !!}
+<script>
+$(function() {
+    $('.getProducts').click(function() {
+        var elem = $(this);
+        $.ajax({
+            type: 'GET',
+            url: '/getProductsBySubcategory',
+            data: "subcategory_id=" + elem.attr('data-artid'),
+            dataType: 'json',
+            success: function(data1) {
+                //Destruir la tabla primero
+                $('#products').dataTable().fnDestroy();
+                $('#products').DataTable({
+                    "data": data1.data,
+                    "columns": [{
+                            "data": "id"
+                        },
+                        {
+                            "data": "name"
+                        },
+                        {
+                            "data": "sell_price"
+                        },
+                        {
+                            "data": "stock"
+                        },
+                    ]
+                });
+            }
+        });
+        return false;
+    });
+});
+</script>
 @endsection

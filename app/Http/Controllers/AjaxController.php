@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Subcategory;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,15 @@ class AjaxController extends Controller
         if ($request->ajax()) {
             $subcategories = Subcategory::where('category_id', $request->category)->get();
             return response()->json($subcategories);
+        }
+    }
+
+    public function getProductsBySubcategory(Request $request)
+    {
+        if ($request->ajax()) {
+            // $products = Product::where('subcategory_id', $request->subcategory_id)->get();
+            // return response()->json($products);
+            return datatables()->of(Product::where('subcategory_id', $request->subcategory_id)->get())->toJson();
         }
     }
 }

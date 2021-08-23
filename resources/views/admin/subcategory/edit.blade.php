@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registrar categoría')
+@section('title','Editar subcategoría')
 @section('styles')
 @endsection
 @section('options')
@@ -10,13 +10,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Registro de categorías
+            Editar subcategoría
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('categories.index')}}">Categorías</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de categorías</li>
+                <li class="breadcrumb-item active" aria-current="page">Editar subcategoría</li>
             </ol>
         </nav>
     </div>
@@ -26,37 +26,28 @@
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de categorías</h4>
+                        <h4 class="card-title">Editar categoría</h4>
                     </div>
-                    {!! Form::open(['route'=>'categories.store', 'method'=>'POST']) !!}
+                    {!! Form::model($subcategory,['route'=>['subcategories.update',$subcategory], 'method'=>'PUT']) !!}
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required>
+                        <input type="text" name="name" id="name" value="{{$subcategory->name}}" class="form-control"
+                            placeholder="Nombre" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Descripción</label>
-                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                        <textarea class="form-control" name="description" id="description"
+                            rows="3">{{$subcategory->description}}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="icon">Ícono</label>
-                        <select class="form-control" name="icon" id="icon">
-                            <option value="1">icon1</option>
-                            <option value="2">icon2</option>
-                            <option value="3">icon3</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                    <a href="{{route('categories.index')}}" class="btn btn-light">
+                    <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
+                    <a href="{{ URL::previous()}}" class="btn btn-light">
                         Cancelar
                     </a>
                     {!! Form::close() !!}
                 </div>
-                {{-- <div class="card-footer text-muted">
-                    {{$categories->render()}}
-            </div> --}}
+            </div>
         </div>
     </div>
-</div>
 </div>
 @endsection
 @section('scripts')

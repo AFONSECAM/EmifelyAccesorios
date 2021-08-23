@@ -21,7 +21,7 @@ class Tag extends Model
     {
         self::create([
             'name' => $request->name,
-            'slug'  => Str::slug($request->slug, '_'),
+            'slug'  => Str::slug($request->name, '_'),
             'description'  => $request->description
         ]);
     }
@@ -31,7 +31,7 @@ class Tag extends Model
     {
         $this->update([
             'name' => $request->name,
-            'slug'  => Str::slug($request->slug, '_'),
+            'slug'  => Str::slug($request->name, '_'),
             'description'  => $request->description
         ]);
     }

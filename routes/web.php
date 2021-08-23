@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -90,6 +91,9 @@ Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
 Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
 Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
 
+
+//RUTAS PARA LOS TAGS
+Route::resource('tags', TagController::class)->except(['show'])->names('tags');
 
 
 

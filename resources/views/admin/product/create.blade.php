@@ -77,7 +77,8 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="category">Categoría</label>
-                        <select class="select2 form-control" name="category" id="category" style="width: 100%;">
+                        <select class="select2 form-control" name="category_id" id="category_id" style="width: 100%;">
+                            <option value="">Seleccione una categoría</option>
                             @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -87,9 +88,7 @@
                         <label for="subcategory_id">Subcategoria</label>
                         <select class="select2 form-control @error('subcategory_id') is-invalid @enderror"
                             name="subcategory_id" id="subcategory_id" style="width: 100%;">
-                            @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
+
                         </select>
                     </div>
 
@@ -138,5 +137,28 @@ $(document).ready(function() {
     $('#provider_id').select2();
     $('#tags').select2();
 });
+</script>
+<script>
+var category = $('#category_id');
+var subcategory = $('#subcategory_id');
+category.change(function() {
+    $.ajax({
+        url: "{{ route('get_subcategories')}}",
+        method: 'GET',
+        data: {
+            category: category.val(),
+        },
+        success: function(data) {
+            console.log(data);
+            subcategory.empty();
+            // subcategory.append('<option disabled selected>-- Seleccione algo --</option>');
+            $.each(data, function(index, element) {
+                subcategory.append('<option value="' + element.id + '">' + element.name +
+                    '</option>');
+            })
+
+        }
+    })
+})
 </script>
 @endsection

@@ -20,9 +20,9 @@ class Product extends Model
         'provider_id',
     ];
 
-    public function category()
+    public function subcategory()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Subcategory::class);
     }
     public function provider()
     {

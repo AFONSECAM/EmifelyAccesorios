@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','información de producto')
+@section('title','Información de producto')
 @section('styles')
 
 @endsection
@@ -34,15 +34,15 @@
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
 
-                                <img src="{{asset('image/'.$product->image)}}" alt="profile" class="img-lg  mb-3" />
-                                {{--  <p>Nombre de proveedor. </p>  --}}
+                                <!-- <img src="{{asset('image/'.$product->image)}}" alt="profile" class="img-lg  mb-3" /> -->
+                                <!-- {{-- <p>Nombre de proveedor. </p>  --}} -->
 
 
                                 <h3>{{$product->name}}</h3>
                                 <div class="d-flex justify-content-between">
                                 </div>
                             </div>
-                            {{--  <div class="border-bottom py-4">
+                            {{-- <div class="border-bottom py-4">
                                 <div class="list-group">
                                     <button type="button" class="list-group-item list-group-item-action active">
                                         Sobre producto
@@ -69,7 +69,7 @@
                                     </span>
                                     <span class="float-right text-muted">
                                         <a href="{{route('providers.show',$product->provider->id)}}">
-                                        {{$product->provider->name}}
+                                            {{$product->provider->name}}
                                         </a>
                                     </span>
                                 </p>
@@ -78,13 +78,13 @@
                                         Categoría
                                     </span>
                                     <span class="float-right text-muted">
-                                        {{--  PRODUCTOS POR CATEGORIA  --}}
-                                        <a href="">
-                                            {{$product->category->name}}
+                                        {{-- PRODUCTOS POR CATEGORIA  --}}
+                                        <a href="{{ route('categories.show', $product->subcategory->category->id)}}">
+                                            {{$product->subcategory->category->name}}
                                         </a>
                                     </span>
                                 </p>
-                                {{--  <p class="clearfix">
+                                {{-- <p class="clearfix">
                                     <span class="float-left">
                                         Facebook
                                     </span>
@@ -92,7 +92,7 @@
                                         <a href="#">David Grey</a>
                                     </span>
                                 </p>  --}}
-                                {{--  <p class="clearfix">
+                                {{-- <p class="clearfix">
                                     <span class="float-left">
                                         Twitter
                                     </span>
@@ -102,11 +102,13 @@
                                 </p>  --}}
                             </div>
 
-                            {{--  <button class="btn btn-primary btn-block">{{$product->status}}</button>  --}}
+                            {{-- <button class="btn btn-primary btn-block">{{$product->status}}</button> --}}
                             @if ($product->status == 'ACTIVE')
-                            <a href="{{route('change.status.products', $product)}}" class="btn btn-success btn-block">Activo</a>
+                            <a href="{{route('change.status.products', $product)}}"
+                                class="btn btn-success btn-block">Activo</a>
                             @else
-                            <a href="{{route('change.status.products', $product)}}" class="btn btn-danger btn-block">Desactivado</a>
+                            <a href="{{route('change.status.products', $product)}}"
+                                class="btn btn-danger btn-block">Desactivado</a>
                             @endif
                         </div>
                         <div class="col-lg-8 pl-lg-5">
@@ -143,16 +145,16 @@
                                             {!!DNS1D::getBarcodeHTML($product->code, 'EAN13'); !!}
                                         </p>
                                         <hr>
-                                        {{--  <strong><i class="fas fa-map-marked-alt mr-1"></i> Categoría</strong>
+                                        {{-- <strong><i class="fas fa-map-marked-alt mr-1"></i> Categoría</strong>
                                         <p class="text-muted">
                                             {{$product->category->name}}
                                         </p>
-                                        <hr>  --}}
-                                        {{--  <strong><i class="fas fa-map-marked-alt mr-1"></i> Proveedor</strong>
+                                        <hr> --}}
+                                        {{-- <strong><i class="fas fa-map-marked-alt mr-1"></i> Proveedor</strong>
                                         <p class="text-muted">
                                             {{$product->provider->name}}
                                         </p>
-                                        <hr>  --}}
+                                        <hr> --}}
                                     </div>
                                 </div>
                             </div>

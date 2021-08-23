@@ -42,24 +42,10 @@
                     </h4>
                     <ul class="solid-bullet-list">
                         <li>
-                            <h5>4 people shared a post
-                                <span class="float-right text-muted font-weight-normal small">8:30 AM</span>
-                            </h5>
-                            <p class="text-muted">It was an awesome work!</p>
-                            <div class="image-layers">
-                                <div class="img-sm profile-image-text bg-warning rounded-circle image-layer-item">M
-                                </div>
-                                <img class="img-sm rounded-circle image-layer-item" src="images/faces/face3.jpg"
-                                    alt="profile">
-                                <img class="img-sm rounded-circle image-layer-item" src="images/faces/face5.jpg"
-                                    alt="profile">
-                                <img class="img-sm rounded-circle image-layer-item" src="images/faces/face8.jpg"
-                                    alt="profile">
-                            </div>
+                            <h5>Descripción</h5>
+                            <p class="text-muted">{{ $category->description}}</p>
                         </li>
-
                     </ul>
-
                 </div>
                 <div class="card-footer">
                     {!! Form::open(['route'=>['categories.destroy',$category], 'method'=>'DELETE'])

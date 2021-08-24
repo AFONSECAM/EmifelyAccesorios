@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\WebController;
 use App\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +41,11 @@ Route::get('/', function () {
     return view('welcome');
     /* return redirect()->route('login'); */
 });
+
+// ============= RUTAS DEL CLIENTE =================
+Route::get('/productos', 'WebController@show_grid')->name('web.show_grid');
+
+//============== FIN ===============================
 
 
 // RUTAS PARA BARCODE

@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\ShoppingCart;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\ServiceProvider;
 
 class ShoppingCartProvider extends ServiceProvider
 {

@@ -126,7 +126,7 @@
                                     <span class="regular-price">${{$product->sell_price}}</span>
                                 </div>
                                 <p>{{$product->short_description}}</p>
-                                <div class="quantity-cart-box d-flex align-items-center mt-20">
+                                {{-- <div class="quantity-cart-box d-flex align-items-center mt-20">
                                     <div class="quantity">
                                         <div class="pro-qty"><input type="text" value="1"></div>
                                     </div>
@@ -134,7 +134,18 @@
                                         <a class="buy-btn" href="#">add to cart<i class="fa fa-shopping-cart"></i>
                                         </a>
                                     </div>
+                                </div> --}}
+                                {!! Form::open(['route' => 'shopping_cart_detail.store', 'method' => 'POST']) !!}
+                                <div class="quantity-cart-box d-flex align-items-center mt-20">
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <div class="quantity">
+                                        <div class="pro-qty"><input type="text" name="quantity" value="1"></div>
+                                    </div>
+                                    <div class="action_link">
+                                        <button class="buy-btn" type="submit" style="border: 0; padding: 0;">Add to cart<i class="fa fa-shopping-cart"></i></button>
+                                    </div>
                                 </div>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

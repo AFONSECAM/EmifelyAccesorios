@@ -44,6 +44,7 @@ Route::get('/', function () {
 
 // ============= RUTAS DEL CLIENTE =================
 Route::get('/productos', 'WebController@show_grid')->name('web.show_grid');
+Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only(['store', 'update', 'destroy'])->names('shopping_cart_detail');
 
 //============== FIN ===============================
 

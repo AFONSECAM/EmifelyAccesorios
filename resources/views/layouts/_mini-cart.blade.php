@@ -6,8 +6,8 @@
         @endif
     </div>
     <div class="cart-total-price">
-        <span>total</span>
-        ${{ $shopping_cart->totalPrice() }}
+        <span>Total</span>
+        ${{ $shopping_cart->total_price() }}
     </div>
     <ul class="cart-list">
         @foreach ($shopping_cart->shopping_cart_details as $shopping_cart_detail)
@@ -26,7 +26,7 @@
         @endforeach
         <li class="mini-cart-price">
             <span class="subtotal">subtotal : </span>
-            <span class="subtotal-price">${{ $shopping_cart->totalPrice() }}</span>
+            <span class="subtotal-price">${{ $shopping_cart->total_price() }}</span>
         </li>
         <li class="checkout-btn">
             <a href="#">checkout</a>

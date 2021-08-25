@@ -33,7 +33,15 @@ class ShoppingCart extends Model
         $this->shopping_cart_details()->create([
             'quantity' => $request->quantity,
             'price' => $product->sell_price,
-            'product_id' => $request->product_id
+            'product_id' => $product->id
+        ]);
+    }
+
+    public function my_storeOne($product){
+        $this->shopping_cart_details()->create([
+            /* 'quantity' => 1, */
+            'price' => $product->sell_price,
+            'product_id' => $product->id
         ]);
     }
 

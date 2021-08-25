@@ -16,7 +16,7 @@
                         class="fa fa-heart-o"></i></a>
                 <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
                         class="fa fa-refresh"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="left" title="Add to cart"><i
+                <a href="{{ route('shopping_cart_details.storeOne', $product) }}" data-toggle="tooltip" data-placement="left" title="Add to cart"><i
                         class="fa fa-shopping-cart"></i></a>
             </div>
         </div>
@@ -67,7 +67,7 @@
             </div>
             <p>{{$product->short_description}}</p>
             <div class="product-list-action-link">
-                <a class="buy-btn" href="#" data-toggle="tooltip" data-placement="top" title="Add to cart">go to buy <i
+                <a class="buy-btn" href="{{ route('shopping_cart_details.storeOne', $product) }}" data-toggle="tooltip" data-placement="top" title="Add to cart">go to buy <i
                         class="fa fa-shopping-cart"></i> </a>
                 <a href="#" data-toggle="modal" data-target="#quick_view{{$product->id}}"> <span data-toggle="tooltip"
                         data-placement="top" title="Quick view"><i class="fa fa-search"></i></span> </a>
@@ -126,18 +126,9 @@
                                     <span class="regular-price">${{$product->sell_price}}</span>
                                 </div>
                                 <p>{{$product->short_description}}</p>
-                                {{-- <div class="quantity-cart-box d-flex align-items-center mt-20">
-                                    <div class="quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                    </div>
-                                    <div class="action_link">
-                                        <a class="buy-btn" href="#">add to cart<i class="fa fa-shopping-cart"></i>
-                                        </a>
-                                    </div>
-                                </div> --}}
-                                {!! Form::open(['route' => 'shopping_cart_detail.store', 'method' => 'POST']) !!}
+                                {!! Form::open(['route' => ['shopping_cart_details.store', $product], 'method' => 'POST']) !!}
                                 <div class="quantity-cart-box d-flex align-items-center mt-20">
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    {{-- <input type="hidden" name="product_id" value="{{ $product->id }}"> --}}
                                     <div class="quantity">
                                         <div class="pro-qty"><input type="text" name="quantity" value="1"></div>
                                     </div>

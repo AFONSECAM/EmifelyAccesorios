@@ -14,15 +14,15 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         Role::create([
-            'name'=>'Admin',
-            'slug'=>'admin',
-            'special'=>'all-access',
+            'name' => 'Admin',
+            'slug' => 'admin',
+            'special' => 'all-access',
         ]);
 
         $user = User::create([
-            'name'=>'Cristian',
-            'email'=>'Cristian@gmail.com',
-            'password'=>'$2y$10$o.CnHSqHSCQ7qSj4zlJU7u0N1QiKqrIjJ2bLP8j/wdw3W8NCA3DkK',
+            'name' => 'Andres Fonseca',
+            'email' => 'andres@gmail.com',
+            'password' => '$2y$10$o.CnHSqHSCQ7qSj4zlJU7u0N1QiKqrIjJ2bLP8j/wdw3W8NCA3DkK',
         ]);
 
         $user->roles()->sync(1);

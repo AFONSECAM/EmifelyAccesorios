@@ -29,7 +29,8 @@
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
                         <div class="auth-form-transparent text-left p-3">
                             <div class="brand-logo">
-                                <img src="{{asset('melody/images/logo.svg')}}" alt="logo">
+                                <img src="{{asset('melody/images/logo/emifely.png')}}" alt="logo"
+                                    class="img-thumbnail rounded-circle">
                             </div>
                             <h4>EmifelyAccesorios Web</h4>
                             <h6 class="font-weight-light">Descripción de la empresa.</h6>

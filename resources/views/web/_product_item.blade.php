@@ -2,7 +2,7 @@
     <!-- product single grid item start -->
     <div class="product-item fix mb-30">
         <div class="product-thumb">
-            <a href="product-details.html">
+            <a href="{{ route('web.product_detail', $product)}}">
                 <img src="{{$product->images->pluck('url')[0]}}" class="img-pri" alt="{{$product->name}}">
                 <img src="{{$product->images->pluck('url')[1]}}" class="img-sec" alt="{{$product->name}}">
             </a>
@@ -16,12 +16,12 @@
                         class="fa fa-heart-o"></i></a>
                 <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i
                         class="fa fa-refresh"></i></a>
-                <a href="{{ route('shopping_cart_details.storeOne', $product) }}" data-toggle="tooltip" data-placement="left" title="Add to cart"><i
-                        class="fa fa-shopping-cart"></i></a>
+                <a href="{{ route('shopping_cart_details.storeOne', $product) }}" data-toggle="tooltip"
+                    data-placement="left" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
             </div>
         </div>
         <div class="product-content">
-            <h4><a href="product-details.html">{{$product->name}}</a></h4>
+            <h4><a href="{{ route('web.product_detail', $product)}}">{{$product->name}}</a></h4>
             <div class="pricebox">
                 <span class="regular-price">${{$product->sell_price}}</span>
                 <div class="ratings">
@@ -38,10 +38,11 @@
         </div>
     </div>
     <!-- product single grid item end -->
+
     <!-- product single list item start -->
     <div class="product-list-item mb-30">
         <div class="product-thumb">
-            <a href="product-details.html">
+            <a href="{{ route('web.product_detail', $product)}}">
                 <img src="{{$product->images->pluck('url')[0]}}" class="img-pri" alt="{{$product->name}}">
                 <img src="{{$product->images->pluck('url')[1]}}" class="img-sec" alt="{{$product->name}}">
             </a>
@@ -50,7 +51,7 @@
             </div> -->
         </div>
         <div class="product-list-content">
-            <h3><a href="product-details.html">{{$product->name}}</a></h3>
+            <h3><a href="{{ route('web.product_detail', $product)}}">{{$product->name}}</a></h3>
             <div class="ratings">
                 <span class="good"><i class="fa fa-star"></i></span>
                 <span class="good"><i class="fa fa-star"></i></span>
@@ -67,8 +68,8 @@
             </div>
             <p>{{$product->short_description}}</p>
             <div class="product-list-action-link">
-                <a class="buy-btn" href="{{ route('shopping_cart_details.storeOne', $product) }}" data-toggle="tooltip" data-placement="top" title="Add to cart">go to buy <i
-                        class="fa fa-shopping-cart"></i> </a>
+                <a class="buy-btn" href="{{ route('shopping_cart_details.storeOne', $product) }}" data-toggle="tooltip"
+                    data-placement="top" title="Add to cart">go to buy <i class="fa fa-shopping-cart"></i> </a>
                 <a href="#" data-toggle="modal" data-target="#quick_view{{$product->id}}"> <span data-toggle="tooltip"
                         data-placement="top" title="Quick view"><i class="fa fa-search"></i></span> </a>
                 <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist"><i
@@ -94,7 +95,9 @@
                             <div class="product-large-slider slick-arrow-style_2 mb-20">
                                 @foreach($product->images as $imagen)
                                 <div class="pro-large-img">
-                                    <img src="{{$imagen->url}}" alt="" />
+                                    <a href="{{ route('web.product_detail', $product)}}">
+                                        <img src="{{$imagen->url}}" alt="" />
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>
@@ -107,7 +110,7 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="product-details-des mt-md-34 mt-sm-34">
-                                <h3><a href="product-details.html">{{$product->name}}</a></h3>
+                                <h3><a href="{{ route('web.product_detail', $product)}}">{{$product->name}}</a></h3>
                                 <div class="ratings">
                                     <span class="good"><i class="fa fa-star"></i></span>
                                     <span class="good"><i class="fa fa-star"></i></span>
@@ -126,14 +129,15 @@
                                     <span class="regular-price">${{$product->sell_price}}</span>
                                 </div>
                                 <p>{{$product->short_description}}</p>
-                                {!! Form::open(['route' => ['shopping_cart_details.store', $product], 'method' => 'POST']) !!}
+                                {!! Form::open(['route' => ['shopping_cart_details.store', $product], 'method' =>
+                                'POST']) !!}
                                 <div class="quantity-cart-box d-flex align-items-center mt-20">
-                                    {{-- <input type="hidden" name="product_id" value="{{ $product->id }}"> --}}
                                     <div class="quantity">
                                         <div class="pro-qty"><input type="text" name="quantity" value="1"></div>
                                     </div>
                                     <div class="action_link">
-                                        <button class="buy-btn" type="submit" style="border: 0; padding: 0;">Add to cart<i class="fa fa-shopping-cart"></i></button>
+                                        <button class="buy-btn" type="submit" style="border: 0; padding: 0;">Add to
+                                            cart<i class="fa fa-shopping-cart"></i></button>
                                     </div>
                                 </div>
                                 {!! Form::close() !!}

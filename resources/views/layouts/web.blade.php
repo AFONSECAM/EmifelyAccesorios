@@ -12,7 +12,7 @@
     <!-- Site title -->
     <title>@yield('title')</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="galio/assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{!!asset('galio/assets/img/favicon.ico')!!}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
     {!! Html::style('galio/assets/css/bootstrap.min.css') !!}
     <!-- Font-Awesome CSS -->
@@ -91,7 +91,7 @@
                         <div class="col-lg-3">
                             <div class="brand-logo">
                                 <a href="index-2.html">
-                                    <img src="/galio/assets/img/logo/logo.png" alt="brand logo">
+                                    <img src="{!!asset('galio/assets/img/logo/logo.png')!!}" alt="brand logo">
                                 </a>
                             </div>
                         </div> <!-- end logo area -->
@@ -545,7 +545,7 @@
                             <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
                         </div>
                         <div class="payment-method-img">
-                            <img src="galio/assets/img/payment.png" alt="">
+                            <img src="{!!asset('galio/assets/img/payment.png')!!}" alt="">
                         </div>
                     </div>
                 </div>

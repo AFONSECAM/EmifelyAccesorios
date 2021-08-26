@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/productos', function () {
-    return view('web.show_grid');
-});
+// Route::get('/productos', function () {
+//     return view('web.show_grid');
+// });
 Route::get('/detalles', function () {
     return view('web.product_detail');
 });
@@ -44,6 +44,10 @@ Route::get('/', function () {
 
 // ============= RUTAS DEL CLIENTE =================
 Route::get('/productos', 'WebController@show_grid')->name('web.show_grid');
+Route::get('/producto/{product}', 'WebController@product_detail')->name('web.product_detail');
+
+
+
 Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only(['update', 'destroy'])->names('shopping_cart_details');
 Route::post('add_to_cart/{product}/store', 'ShoppingCartDetailController@store')->name('shopping_cart_details.store');
 Route::get('add_a_product_to_cart/{product}/store', 'ShoppingCartDetailController@storeOne')->name('shopping_cart_details.storeOne');

@@ -61,7 +61,7 @@
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="myaccount">
                                                     <a class="dropdown-item" href="my-account.html">my account</a>
-                                                    <a class="dropdown-item" href="login-register.html"> login</a>
+                                                    <a class="dropdown-item" href="{{ route('login') }}"> login</a>
                                                     <a class="dropdown-item" href="login-register.html">register</a>
                                                 </div>
                                             </div>

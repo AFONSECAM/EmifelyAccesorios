@@ -32,8 +32,8 @@
                                 <img src="{{asset('melody/images/logo/emifely.png')}}" alt="logo"
                                     class="img-thumbnail rounded-circle">
                             </div>
-                            <h4>EmifelyAccesorios Web</h4>
-                            <h6 class="font-weight-light">Descripción de la empresa.</h6>
+                            {{-- <h4>EmifelyAccesorios Web</h4>
+                            <h6 class="font-weight-light">Descripción de la empresa.</h6> --}}
 
 
                             @yield('content')
@@ -43,8 +43,8 @@
                     </div>
                     <div class="col-lg-6 login-half-bg d-flex flex-row">
                         <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy;
-                            2020 Todos los derechos reservados <a
-                                href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">Texvn Online</a></p>
+                            2021 Todos los derechos reservados <a
+                                href="#">EmifelyAccesorios</a></p>
                     </div>
                 </div>
             </div>

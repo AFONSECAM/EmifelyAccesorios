@@ -122,7 +122,7 @@
                                     </div>
                                 </div>
                                 <div class="availability mt-10">
-                                    <h5>Availability:</h5>
+                                    <h5>Disponibilidad:</h5>
                                     <span>{{$product->stock}} en stock</span>
                                 </div>
                                 <div class="pricebox">

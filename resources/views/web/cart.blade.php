@@ -64,7 +64,9 @@
                                                 value="{{$shopping_cart_detail->quantity}}"></div>
                                     </td>
                                     <td class="pro-subtotal"><span>${{$shopping_cart_detail->total()}}</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="pro-remove"><a
+                                            href="{{ route('shopping_cart_details.destroy', $shopping_cart_detail)}}"><i
+                                                class="fa fa-trash-o"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -98,15 +100,15 @@
                                 <table class="table">
                                     <tr>
                                         <td>Sub Total</td>
-                                        <td>$230</td>
+                                        <td>${{$shopping_cart->total_price()}}</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>Shipping</td>
                                         <td>$70</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="total">
                                         <td>Total</td>
-                                        <td class="total-amount">$300</td>
+                                        <td class="total-amount">${{$shopping_cart->total_price()}}</td>
                                     </tr>
                                 </table>
                             </div>

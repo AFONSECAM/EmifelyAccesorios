@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShoppingCartDetailController;
 use App\Http\Controllers\WebController;
 use App\Product;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +51,8 @@ Route::get('/carrito', 'WebController@cart')->name('web.cart');
 
 
 
-Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only(['update', 'destroy'])->names('shopping_cart_details');
+Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only(['update'])->names('shopping_cart_details');
+Route::get('shopping_cart_detail/{shopping_cart_detail}/destroy', 'ShoppingCartDetailController@destroy')->name('shopping_cart_details.destroy');
 Route::post('add_to_cart/{product}/store', 'ShoppingCartDetailController@store')->name('shopping_cart_details.store');
 Route::get('add_a_product_to_cart/{product}/store', 'ShoppingCartDetailController@storeOne')->name('shopping_cart_details.storeOne');
 

@@ -12,11 +12,6 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:clients.create')->only(['create','store']);
-        $this->middleware('can:clients.index')->only(['index']);
-        $this->middleware('can:clients.edit')->only(['edit','update']);
-        $this->middleware('can:clients.show')->only(['show']);
-        $this->middleware('can:clients.destroy')->only(['destroy']);
     }
 
     public function index()
@@ -40,7 +35,7 @@ class ClientController extends Controller
     {
         $total_purchases = 0;
         foreach ($client->sales as $key =>  $sale) {
-            $total_purchases+=$sale->total;
+            $total_purchases += $sale->total;
         }
         return view('admin.client.show', compact('client', 'total_purchases'));
     }

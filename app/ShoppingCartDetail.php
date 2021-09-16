@@ -14,4 +14,9 @@ class ShoppingCartDetail extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function total()
+    {
+        return $this->quantity * $this->price;
+    }
 }

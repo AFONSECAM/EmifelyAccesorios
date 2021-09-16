@@ -80,14 +80,15 @@
                                         <span class="regular-price">${{ $product->sell_price }}</span>
                                     </div>
                                     <p>{{ $product->short_description }}</p>
-                                    {!! Form::open(['route' => ['shopping_cart_details.store', $product], 'method' => 'POST']) !!}
+                                    {!! Form::open(['route' => ['shopping_cart_details.store', $product], 'method' =>
+                                    'POST']) !!}
                                     <div class="quantity-cart-box d-flex align-items-center">
                                         <div class="quantity">
                                             <div class="pro-qty"><input type="text" value="1" name="quantity"></div>
                                         </div>
                                         <div class="action_link">
-                                            <button class="buy-btn" type="submit" style="border: 0; padding: 0;">add to cart<i
-                                                    class="fa fa-shopping-cart"></i></a>
+                                            <button class="buy-btn" type="submit" style="border: 0; padding: 0;">add to
+                                                cart<i class="fa fa-shopping-cart"></i></a>
                                         </div>
                                     </div>
                                     {!! Form::close() !!}
@@ -279,6 +280,7 @@
                                 </div>
                             </div>
                             <!-- product single item end -->
+
                             <!-- product single item start -->
                             <div class="product-item fix">
                                 <div class="product-thumb">
@@ -321,6 +323,7 @@
                                 </div>
                             </div>
                             <!-- product single item end -->
+
                             <!-- product single item start -->
                             <div class="product-item fix">
                                 <div class="product-thumb">
@@ -363,6 +366,7 @@
                                 </div>
                             </div>
                             <!-- product single item end -->
+
                             <!-- product single item start -->
                             <div class="product-item fix">
                                 <div class="product-thumb">
@@ -405,6 +409,7 @@
                                 </div>
                             </div>
                             <!-- product single item end -->
+
                             <!-- product single item start -->
                             <div class="product-item fix">
                                 <div class="product-thumb">
@@ -447,6 +452,7 @@
                                 </div>
                             </div>
                             <!-- product single item end -->
+
                             <!-- product single item start -->
                             <div class="product-item fix">
                                 <div class="product-thumb">
@@ -488,6 +494,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- product single item end -->
                         </div>
                         <!-- featured category end -->
@@ -784,15 +791,6 @@
                             </div>
                         </div>
                         <!-- product tag end -->
-
-                        <!-- sidebar banner start -->
-                        <div class="sidebar-widget mb-22">
-                            <div class="img-container fix img-full mt-30">
-                                <a href="#"><img src="{!!asset('galio/assets/img/banner/banner_shop.jpg')!!}"
-                                        alt=""></a>
-                            </div>
-                        </div>
-                        <!-- sidebar banner end -->
                     </div>
                 </div>
                 <!-- sidebar end -->
@@ -800,213 +798,6 @@
         </div>
     </div>
     <!-- product details wrapper end -->
-
-    <!-- brand area start -->
-    <div class=" brand-area pt-28 pb-30 pt-md-14 pt-sm-14">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title mb-30">
-                        <div class="title-icon">
-                            <i class="fa fa-crop"></i>
-                        </div>
-                        <h3>Popular Brand</h3>
-                    </div> <!-- section title end -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="brand-active slick-padding slick-arrow-style">
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br1.png')!!}" alt=""></a>
-                        </div>
-                        <div class=" brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br2.png')!!}" alt=""></a>
-                        </div>
-                        <div class=" brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br3.png')!!}" alt=""></a>
-                        </div>
-                        <div class=" brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br4.png')!!}" alt=""></a>
-                        </div>
-                        <div class=" brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br5.png')!!}" alt=""></a>
-                        </div>
-                        <div class=" brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br6.png')!!}" alt=""></a>
-                        </div>
-                        <div class=" brand-item text-center">
-                            <a href="#"><img src="{!!asset('galio/assets/img/brand/br4.png')!!}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- brand area end -->
-
-    <!-- footer area start -->
-    <footer>
-        <!-- footer top start -->
-        <div class=" footer-top bg-black pt-14 pb-14">
-            <div class="container">
-                <div class="footer-top-wrapper">
-                    <div class="newsletter__wrap">
-                        <div class="newsletter__title">
-                            <div class="newsletter__icon">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                            <div class="newsletter__content">
-                                <h3>sign
-                                    up
-                                    for
-                                    newsletter
-                                </h3>
-                                <p>Duis
-                                    autem
-                                    vel
-                                    eum
-                                    iriureDuis
-                                    autem
-                                    vel
-                                    eum
-                                </p>
-                            </div>
-                        </div>
-                        <div class="newsletter__box">
-                            <form id="mc-form">
-                                <input type="email" id="mc-email" autocomplete="off" placeholder="Email">
-                                <button id="mc-submit">subscribe!</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="social-icons">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i
-                                class="fa fa-facebook"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i
-                                class="fa fa-twitter"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i
-                                class="fa fa-instagram"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Google-plus"><i
-                                class="fa fa-google-plus"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i
-                                class="fa fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer top end -->
-
-        <!-- footer main start -->
-        <div class="footer-widget-area pt-40 pb-38 pb-sm-10">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer-widget mb-sm-30">
-                            <div class="widget-title mb-10 mb-sm-6">
-                                <h4>contact us</h4>
-                            </div>
-                            <div class="widget-body">
-                                <ul class="location">
-                                    <li><i class="fa fa-envelope"></i>support@galio.com
-                                    </li>
-                                    <li><i class="fa fa-phone"></i>(800)
-                                        0123 456 789</li>
-                                    <li><i class="fa fa-map-marker"></i>Address:
-                                        1234 - Bandit Tringi
-                                        Aliquam Vitae.
-                                        New York</li>
-                                </ul>
-                                <a class="map-btn" href="contact-us.html">open
-                                    in google map</a>
-                            </div>
-                        </div> <!-- single widget end -->
-                    </div> <!-- single widget column end -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer-widget mb-sm-30">
-                            <div class="widget-title mb-10 mb-sm-6">
-                                <h4>my account</h4>
-                            </div>
-                            <div class="widget-body">
-                                <ul>
-                                    <li><a href="#">my
-                                            account</a></li>
-                                    <li><a href="#">my cart</a>
-                                    </li>
-                                    <li><a href="#">checkout</a>
-                                    </li>
-                                    <li><a href="#">my
-                                            wishlist</a></li>
-                                    <li><a href="#">login</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> <!-- single widget end -->
-                    </div> <!-- single widget column end -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer-widget mb-sm-30">
-                            <div class="widget-title mb-10 mb-sm-6">
-                                <h4>short code</h4>
-                            </div>
-                            <div class="widget-body">
-                                <ul>
-                                    <li><a href="#">gallery</a>
-                                    </li>
-                                    <li><a href="#">accordion</a>
-                                    </li>
-                                    <li><a href="#">carousel</a>
-                                    </li>
-                                    <li><a href="#">map</a></li>
-                                    <li><a href="#">tab</a></li>
-                                </ul>
-                            </div>
-                        </div> <!-- single widget end -->
-                    </div> <!-- single widget column end -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer-widget mb-sm-30">
-                            <div class="widget-title mb-10 mb-sm-6">
-                                <h4>product tags</h4>
-                            </div>
-                            <div class="widget-body">
-                                <ul>
-                                    <li><a href="#">computer</a>
-                                    </li>
-                                    <li><a href="#">camera</a>
-                                    </li>
-                                    <li><a href="#">smart
-                                            phone</a></li>
-                                    <li><a href="#">watch</a>
-                                    </li>
-                                    <li><a href="#">tablet</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> <!-- single widget end -->
-                    </div> <!-- single widget column end -->
-                </div>
-            </div>
-        </div>
-        <!-- footer main end -->
-
-        <!-- footer bootom start -->
-        <div class="footer-bottom-area bg-gray pt-20 pb-20">
-            <div class="container">
-                <div class="footer-bottom-wrap">
-                    <div class="copyright-text">
-                        <p><a target="_blank" href="https://www.templateshub.net">Templates
-                                Hub</a></p>
-                    </div>
-                    <div class="payment-method-img">
-                        <img src="{!!asset('galio/assets/img/payment.png')!!}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer bootom end -->
-
-    </footer>
-    <!-- footer area end -->
-
 </div>
 
 <!-- Quick view modal start -->

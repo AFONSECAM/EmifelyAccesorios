@@ -17,4 +17,9 @@ class WebController extends Controller
     {
         return view('web.product_detail', compact('product'));
     }
+
+    public function cart()
+    {
+        return view('web.cart');
+    }
 }

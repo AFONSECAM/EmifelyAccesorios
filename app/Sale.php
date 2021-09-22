@@ -14,13 +14,16 @@ class Sale extends Model
         'total',
         'status',
     ];
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function client(){
-        return $this->belongsTo(Client::class);
+    public function client()
+    {
+        return $this->belongsTo(User::class);
     }
-    public function saleDetails(){
+    public function saleDetails()
+    {
         return $this->hasMany(saleDetail::class);
     }
 }

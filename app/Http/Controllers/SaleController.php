@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sale;
 use App\Client;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
@@ -32,7 +33,7 @@ class SaleController extends Controller
     }
     public function create()
     {
-        $clients = Client::get();
+        $clients = User::role('Client')->get();
         $products = Product::where('status', 'ACTIVE')->get();
         return view('admin.sale.create', compact('clients', 'products'));
     }
@@ -40,7 +41,7 @@ class SaleController extends Controller
     {
         $sale = Sale::create($request->all() + [
             'user_id' => Auth::user()->id,
-            'sale_date' => Carbon::now('America/Lima'),
+            'sale_date' => Carbon::now('America/Bogota'),
         ]);
         foreach ($request->product_id as $key => $product) {
             $results[] = array("product_id" => $request->product_id[$key], "quantity" => $request->quantity[$key], "price" => $request->price[$key], "discount" => $request->discount[$key]);

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Caffeinated\Shinobi\Models\Role;
 use App\User;
 
 class UsersTableSeeder extends Seeder

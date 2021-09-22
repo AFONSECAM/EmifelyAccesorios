@@ -24,18 +24,18 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Editar rol</h4>
                     </div>
                     {!! Form::model($role,['route'=>['roles.update',$role], 'method'=>'PUT']) !!}
-                    
+
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text"
-                          class="form-control" name="name" id="name" value="{{$role->name}}" aria-describedby="helpId" placeholder="">
-                      </div>
-                      <div class="form-group">
+                        <input type="text" class="form-control" name="name" id="name" value="{{$role->name}}"
+                            aria-describedby="helpId" placeholder="">
+                    </div>
+                    <!-- <div class="form-group">
                           <label for="slug">Slug</label>
                           <input type="text"
                             class="form-control" name="slug" id="slug" value="{{$role->slug}}" aria-describedby="helpId" placeholder="">
@@ -43,23 +43,23 @@
                       <div class="form-group">
                         <label for="description">Descripción</label>
                         <textarea class="form-control" name="description" id="description" rows="3">{{$role->description}}</textarea>
-                      </div>
+                      </div> -->
 
                     @include('admin.role._form')
-                    
 
-                     <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
-                     <a href="{{route('roles.index')}}" class="btn btn-light">
+
+                    <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
+                    <a href="{{route('roles.index')}}" class="btn btn-light">
                         Cancelar
-                     </a>
-                     {!! Form::close() !!}
+                    </a>
+                    {!! Form::close() !!}
                 </div>
-                {{--  <div class="card-footer text-muted">
+                {{-- <div class="card-footer text-muted">
                     {{$roles->render()}}
-                </div>  --}}
-            </div>
+            </div> --}}
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('scripts')

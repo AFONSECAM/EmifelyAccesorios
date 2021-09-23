@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ShoppingCart extends Model
@@ -26,6 +27,19 @@ class ShoppingCart extends Model
             return ShoppingCart::find($shopping_cart_id);
         } else {
             return ShoppingCart::create();
+        }
+    }
+
+    public static function findOrCreateByUserId($user)
+    {
+        $active = $user->shoppingCarts->where('status', 'ACTIVE')->first();
+        if ($active) {
+            return
+                $user->shoppingCarts->where('status', 'ACTIVE')->first();
+        } else {
+            return ShoppingCart::create([
+                'user_id' => Auth()->user()->id,
+            ]);
         }
     }
 
@@ -74,6 +88,12 @@ class ShoppingCart extends Model
         $session_name = 'shopping_cart_id';
         $shopping_cart_id = Session::get($session_name);
         $shopping_cart = self::findOrCreateBySessionId($shopping_cart_id);
+        return $shopping_cart;
+    }
+
+    public static function getUserShoppingCart()
+    {
+        $shopping_cart = self::findOrCreateByUserId(Auth::user());
         return $shopping_cart;
     }
 }

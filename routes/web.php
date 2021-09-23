@@ -19,21 +19,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/productos', function () {
 //     return view('web.show_grid');
 // });
-Route::get('/detalles', function () {
-    return view('web.product_detail');
-});
-Route::get('/micuenta', function () {
-    return view('web.my_account');
-});
+
 
 Route::get('/contactenos', function () {
     return view('web.contact_us');
-});
-Route::get('/cart', function () {
-    return view('web.cart');
-});
-Route::get('/checkout', function () {
-    return view('web.checkout');
 });
 
 Route::get('/', function () {
@@ -48,6 +37,7 @@ Route::get('/producto/{product}', 'WebController@product_detail')->name('web.pro
 Route::get('/carrito', 'WebController@cart')->name('web.cart');
 Route::get('/registro', 'WebController@login_register')->name('web.registro');
 Route::get('/micuenta', 'MyAccountController@myAccount')->name('web.my_account');
+Route::get('/pagar', 'MyAccountController@checkout')->name('web.checkout');
 
 
 

@@ -13,7 +13,8 @@
         @foreach ($shopping_cart->shopping_cart_details as $shopping_cart_detail)
         <li>
             <div class="cart-img">
-                <a href="product-details.html"><img src="{{ $shopping_cart_detail->product->images->pluck('url')[0] }}" alt=""></a>
+                <a href="product-details.html"><img src="{{ $shopping_cart_detail->product->images->pluck('url')[0] }}"
+                        alt=""></a>
             </div>
             <div class="cart-info">
                 <h4><a href="product-details.html">{{ $shopping_cart_detail->product->name }}</a></h4>
@@ -29,7 +30,7 @@
             <span class="subtotal-price">${{ $shopping_cart->total_price() }}</span>
         </li>
         <li class="checkout-btn">
-            <a href="#">checkout</a>
+            <a href="{{route('web.checkout')}}">checkout</a>
         </li>
     </ul>
 </div>

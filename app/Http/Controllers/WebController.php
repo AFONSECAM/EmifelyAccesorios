@@ -27,9 +27,4 @@ class WebController extends Controller
     {
         return view('web.login_register');
     }
-
-    public function myAccount()
-    {
-        return view('web.my_account');
-    }
 }

@@ -47,7 +47,7 @@ Route::get('/producto/{product}', 'WebController@product_detail')->name('web.pro
 
 Route::get('/carrito', 'WebController@cart')->name('web.cart');
 Route::get('/registro', 'WebController@login_register')->name('web.registro');
-Route::get('/micuenta', 'WebController@myAccount')->name('web.my_account');
+Route::get('/micuenta', 'MyAccountController@myAccount')->name('web.my_account');
 
 
 

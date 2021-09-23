@@ -22,4 +22,14 @@ class WebController extends Controller
     {
         return view('web.cart');
     }
+
+    public function login_register()
+    {
+        return view('web.login_register');
+    }
+
+    public function myAccount()
+    {
+        return view('web.my_account');
+    }
 }

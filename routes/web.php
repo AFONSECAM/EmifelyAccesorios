@@ -25,9 +25,7 @@ Route::get('/detalles', function () {
 Route::get('/micuenta', function () {
     return view('web.my_account');
 });
-Route::get('/login_register', function () {
-    return view('web.login_register');
-});
+
 Route::get('/contactenos', function () {
     return view('web.contact_us');
 });
@@ -48,6 +46,8 @@ Route::get('/productos', 'WebController@show_grid')->name('web.show_grid');
 Route::get('/producto/{product}', 'WebController@product_detail')->name('web.product_detail');
 
 Route::get('/carrito', 'WebController@cart')->name('web.cart');
+Route::get('/registro', 'WebController@login_register')->name('web.registro');
+Route::get('/micuenta', 'WebController@myAccount')->name('web.my_account');
 
 
 

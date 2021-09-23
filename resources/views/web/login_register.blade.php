@@ -35,27 +35,27 @@
                     <!-- Login Content Start -->
                     <div class="col-lg-6">
                         <div class="login-reg-form-wrap  pr-lg-50">
-                            <h2>Sign In</h2>
+                            <h2>Iniciar sesión</h2>
                             <form action="#" method="post">
                                 <div class="single-input-item">
-                                    <input type="email" placeholder="Email or Username" required />
+                                    <input type="email" placeholder="Email o Usuario" required />
                                 </div>
                                 <div class="single-input-item">
-                                    <input type="password" placeholder="Enter your Password" required />
+                                    <input type="password" placeholder="Ingresatu contraseña" required />
                                 </div>
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <div class="remember-meta">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                                <label class="custom-control-label" for="rememberMe">Recuerdame</label>
                                             </div>
                                         </div>
-                                        <a href="#" class="forget-pwd">Forget Password?</a>
+                                        <a href="#" class="forget-pwd">Olvide mi clave</a>
                                     </div>
                                 </div>
                                 <div class="single-input-item">
-                                    <button class="sqr-btn">Login</button>
+                                    <button class="sqr-btn">Iniciar sesión</button>
                                 </div>
                             </form>
                         </div>
@@ -65,23 +65,27 @@
                     <!-- Register Content Start -->
                     <div class="col-lg-6">
                         <div class="login-reg-form-wrap mt-md-34 mt-sm-34">
-                            <h2>Singup Form</h2>
-                            <form action="#" method="post">
+                            <h2>Formulario registro</h2>
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
                                 <div class="single-input-item">
-                                    <input type="text" placeholder="Full Name" required />
+                                    <input type="text" id="name" placeholder="Nombre completo" name="name" required />
                                 </div>
                                 <div class="single-input-item">
-                                    <input type="email" placeholder="Enter your Email" required />
+                                    <input type="email" id="email" placeholder="Ingresa tu email" name="email"
+                                        required />
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="single-input-item">
-                                            <input type="password" placeholder="Enter your Password" required />
+                                            <input type="password" id="password" placeholder="Ingresa tu contraseña"
+                                                name="password" required />
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="single-input-item">
-                                            <input type="password" placeholder="Repeat your Password" required />
+                                            <input type="password" placeholder="Repite tu contraseña"
+                                                id="password-confirm" name="password_confirmation" required />
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="single-input-item">
-                                    <button class="sqr-btn">Register</button>
+                                    <button type="submit" class="sqr-btn">Registrar</button>
                                 </div>
                             </form>
                         </div>

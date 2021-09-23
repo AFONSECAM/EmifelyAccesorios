@@ -36,18 +36,22 @@
                     <div class="col-lg-6">
                         <div class="login-reg-form-wrap  pr-lg-50">
                             <h2>Iniciar sesión</h2>
-                            <form action="#" method="post">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
                                 <div class="single-input-item">
-                                    <input type="email" placeholder="Email o Usuario" required />
+                                    <input id="email" type="email" placeholder="Ingresa tu email" name="email"
+                                        required />
                                 </div>
                                 <div class="single-input-item">
-                                    <input type="password" placeholder="Ingresatu contraseña" required />
+                                    <input type="password" id="password" placeholder="Ingresa tu contraseña"
+                                        name="password" required />
                                 </div>
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <div class="remember-meta">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                                <input type="checkbox" class="custom-control-input" name="remember"
+                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                 <label class="custom-control-label" for="rememberMe">Recuerdame</label>
                                             </div>
                                         </div>
@@ -55,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="single-input-item">
-                                    <button class="sqr-btn">Iniciar sesión</button>
+                                    <button type="submit" class="sqr-btn">Iniciar sesión</button>
                                 </div>
                             </form>
                         </div>
